@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dia de IA · Edwards Lifesciences — Materiais</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500;600;700;800&family=Play:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#C22235; --red-d:#A81D2D;
+  --ink:#0D0D0D; --cream:#F5F2EE; --cream2:#EDEAE5; --white:#fff;
+  --text:#16140F; --muted:#6B655C; --border:#DDD9D3;
+  --n1:#D98A2B; --n4:#1C8C8C;
+  --disp:'Kanit',-apple-system,'Segoe UI',sans-serif;
+  --body:'Play',-apple-system,'Segoe UI',sans-serif;
+  --ui:'Inter',-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--body);background:var(--cream);color:var(--text);min-height:100vh;display:flex;flex-direction:column;}
+
+/* top bar */
+header{background:var(--ink);display:flex;align-items:center;justify-content:space-between;padding:14px 30px;}
+.brand{font-family:var(--disp);font-weight:800;font-size:19px;color:#fff;letter-spacing:-.5px;}
+.brand .dot{color:var(--red);}
+header .tag{font-family:var(--ui);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#8b8b8b;}
+
+main{flex:1;max-width:1000px;width:100%;margin:0 auto;padding:64px 28px 40px;}
+.eyebrow{font-family:var(--ui);font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:16px;}
+h1{font-family:var(--disp);font-weight:800;font-size:50px;line-height:1.04;letter-spacing:-1.5px;color:var(--ink);}
+h1 .red{color:var(--red);}
+.sub{font-size:19px;color:var(--muted);line-height:1.55;margin-top:18px;max-width:620px;}
+.rule{width:60px;height:5px;background:var(--red);border-radius:2px;margin:26px 0 0;}
+
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:46px;}
+.card{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--border);border-radius:16px;padding:30px;text-decoration:none;color:inherit;position:relative;overflow:hidden;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;}
+.card.manha::before{background:var(--n1);}
+.card.tarde::before{background:var(--red);}
+.card:hover{transform:translateY(-5px);box-shadow:0 18px 44px rgba(0,0,0,.12);border-color:#c9c4bb;}
+.card .when{font-family:var(--ui);font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;display:flex;align-items:center;gap:8px;margin-bottom:14px;}
+.card.manha .when{color:var(--n1);}
+.card.tarde .when{color:var(--red);}
+.card h2{font-family:var(--disp);font-weight:800;font-size:27px;color:var(--ink);line-height:1.1;letter-spacing:-.5px;}
+.card .desc{font-size:16px;color:var(--muted);line-height:1.55;margin-top:12px;flex:1;}
+.card .meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px;}
+.card .chip{font-family:var(--ui);font-size:12.5px;font-weight:600;color:var(--muted);background:var(--cream2);border:1px solid var(--border);border-radius:99px;padding:5px 12px;}
+.card .go{display:inline-flex;align-items:center;gap:9px;margin-top:22px;font-family:var(--ui);font-weight:700;font-size:15px;}
+.card.manha .go{color:var(--n1);}
+.card.tarde .go{color:var(--red);}
+.card .go .arr{transition:transform .18s ease;}
+.card:hover .go .arr{transform:translateX(5px);}
+
+.note{font-family:var(--ui);font-size:14px;color:var(--muted);margin-top:34px;display:flex;align-items:center;gap:9px;}
+.note b{color:var(--text);}
+
+footer{border-top:1px solid var(--border);padding:22px 30px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:var(--ui);font-size:13px;color:var(--muted);}
+footer .b{font-family:var(--disp);font-weight:700;color:var(--text);}
+footer .b .dot{color:var(--red);}
+footer a{color:var(--red);text-decoration:none;}
+
+@media (max-width:720px){
+  h1{font-size:36px;}
+  .cards{grid-template-columns:1fr;}
+  main{padding:44px 20px 30px;}
+}
+</style>
+</head>
+<body>
+  <header>
+    <div class="brand">Blenduca<span class="dot">.</span> B'Corp</div>
+    <div class="tag">Edwards Lifesciences · Dia de IA</div>
+  </header>
+
+  <main>
+    <div class="eyebrow">Dia de IA · Edwards Lifesciences</div>
+    <h1>Um dia. Dois públicos.<br><span class="red">Uma direção.</span></h1>
+    <div class="sub">Materiais oficiais do Dia de IA na Edwards. Escolha o conteúdo abaixo — ambos abrem direto no navegador, com setas para navegar.</div>
+    <div class="rule"></div>
+
+    <div class="cards">
+      <a class="card manha" href="manha/">
+        <div class="when">🌅 Manhã</div>
+        <h2>Workshop de Líderes</h2>
+        <div class="desc">Os 4 Níveis da Transformação Digital com IA — do panorama do mercado à prática no Microsoft Copilot, com passo a passo e prompts prontos.</div>
+        <div class="meta">
+          <span class="chip">👥 20 líderes seniores</span>
+          <span class="chip">⏱ 4 horas</span>
+        </div>
+        <span class="go">Abrir material <span class="arr">→</span></span>
+      </a>
+
+      <a class="card tarde" href="tarde/">
+        <div class="when">🌆 Tarde</div>
+        <h2>Palestra do Time</h2>
+        <div class="desc">IA First na prática — a mentalidade, os 4 níveis e o Copilot no dia a dia administrativo, com aplicações reais em Teams, Outlook, Word, Excel e PowerPoint.</div>
+        <div class="meta">
+          <span class="chip">👥 Time administrativo</span>
+          <span class="chip">⏱ 1 hora</span>
+        </div>
+        <span class="go">Abrir palestra <span class="arr">→</span></span>
+      </a>
+    </div>
+
+    <div class="note">💡 <span><b>Dica:</b> nos dois materiais, use as setas ← → para navegar e a tecla <b>F</b> para tela cheia.</span></div>
+  </main>
+
+  <footer>
+    <span class="b">Blenduca<span class="dot">.</span> B'Corp · Expert em IA Aplicada a Negócios</span>
+    <span>Ricardo Werlang · <a href="https://www.instagram.com/ricardo_werlang/">@ricardo_werlang</a> · blenduca.com.br</span>
+  </footer>
+</body>
+</html>

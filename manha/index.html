@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dia de IA · Workshop de Líderes — Edwards Lifesciences</title>
+<style>
+:root {
+  --red: #C22235;
+  --red-dim: rgba(194,34,53,0.1);
+  --black: #0D0D0D;
+  --gray: #B8B8B8;
+  --bg: #F5F2EE;
+  --bg2: #EDEAE5;
+  --white: #FFFFFF;
+  --text: #111111;
+  --muted: #666666;
+  --border: #DDD9D3;
+  --ms: #1A5FB4;
+  --n1: #D98A2B;
+  --n2: #C22235;
+  --n3: #3F4A57;
+  --n4: #1C8C8C;
+  --sidebar-w: 236px;
+  --top-h: 48px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+
+/* ─── TOP BAR ─────────────────────────────────── */
+#topbar{position:fixed;top:0;left:0;right:0;height:var(--top-h);background:var(--black);display:flex;align-items:center;padding:0 20px 0 0;z-index:200;border-bottom:1px solid #1a1a1a;}
+#topbar .brand{width:var(--sidebar-w);display:flex;align-items:center;gap:10px;padding:0 20px;border-right:1px solid #2a2a2a;height:100%;flex-shrink:0;}
+.b-logo-text{font-size:17px;font-weight:900;line-height:1;letter-spacing:-0.5px;color:#fff;}
+.b-logo-text .dot{color:var(--red);}
+#topbar .brand .b-sub{font-size:8px;color:var(--gray);letter-spacing:1.4px;text-transform:uppercase;margin-top:3px;}
+#topbar .top-nav{display:flex;align-items:center;gap:4px;padding:0 20px;}
+.top-nav-btn{font-size:11px;font-weight:600;letter-spacing:0.5px;padding:5px 14px;border-radius:4px;border:none;cursor:pointer;background:transparent;color:var(--gray);transition:all 0.15s;}
+.top-nav-btn:hover{color:var(--white);}
+.top-nav-btn.active{background:var(--white);color:var(--black);}
+#topbar .dots{margin-left:auto;display:flex;gap:6px;align-items:center;padding-right:4px;}
+.dot-nav{width:8px;height:8px;border-radius:50%;background:#333;transition:background 0.2s;cursor:pointer;}
+.dot-nav.active{background:var(--red);}
+.dot-nav.done{background:#555;}
+
+/* ─── SIDEBAR ─────────────────────────────────── */
+#sidebar{position:fixed;top:var(--top-h);left:0;width:var(--sidebar-w);height:calc(100vh - var(--top-h));background:var(--black);overflow-y:auto;z-index:100;border-right:1px solid #1a1a1a;padding:16px 0 40px;}
+.sidebar-section-label{font-size:9px;font-weight:700;letter-spacing:2px;color:#444;text-transform:uppercase;padding:10px 18px 6px;display:flex;align-items:center;gap:7px;}
+.sidebar-section-label .lv-chip{width:7px;height:7px;border-radius:2px;flex-shrink:0;}
+.sidebar-item{display:flex;align-items:center;gap:10px;padding:8px 18px;cursor:pointer;transition:background 0.15s;border-left:2px solid transparent;}
+.sidebar-item:hover{background:rgba(255,255,255,0.04);}
+.sidebar-item.active{background:var(--red-dim);border-left-color:var(--red);}
+.sidebar-item .si-num{font-size:10px;font-weight:700;color:#444;min-width:16px;}
+.sidebar-item.active .si-num{color:var(--red);}
+.sidebar-item .si-title{font-size:12px;color:#888;line-height:1.3;flex:1;}
+.sidebar-item.active .si-title{color:var(--white);}
+.si-star{font-size:9px;color:var(--red);}
+
+/* ─── CONTENT ─────────────────────────────────── */
+#content{margin-left:var(--sidebar-w);padding-top:var(--top-h);min-height:100vh;}
+.bloco{display:none;padding:48px 64px 110px;max-width:1040px;}
+.bloco.active{display:block;}
+.bloco-eyebrow{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--red);text-transform:uppercase;margin-bottom:12px;}
+.bloco h1{font-size:38px;font-weight:800;color:var(--black);line-height:1.1;margin-bottom:10px;letter-spacing:-1px;}
+.bloco-subtitle{font-size:12px;font-weight:700;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;margin-bottom:20px;}
+.time-badge{display:inline-flex;align-items:center;gap:6px;background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:5px 12px;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:14px;margin-right:8px;}
+.nivel-tag{display:inline-flex;align-items:center;gap:6px;border-radius:4px;padding:5px 12px;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:14px;color:#fff;}
+.red-rule{width:40px;height:3px;background:var(--red);margin:18px 0 32px;}
+
+h2{font-size:20px;font-weight:700;color:var(--black);margin:36px 0 12px;letter-spacing:-0.3px;}
+h3{font-size:15px;font-weight:700;color:var(--black);margin:24px 0 8px;}
+p{font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:12px;}
+p strong{color:var(--text);}
+p a{color:var(--red);text-decoration:none;}
+.lead{font-size:16px;color:#3a3a3a;}
+
+/* ─── TABLE ─────────────────────────────────── */
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px;}
+th{text-align:left;padding:9px 14px;background:var(--black);color:var(--gray);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border:1px solid #222;}
+td{padding:10px 14px;border:1px solid var(--border);color:var(--text);vertical-align:top;line-height:1.5;}
+tr:nth-child(even) td{background:var(--bg2);}
+td:first-child{font-weight:600;}
+
+/* ─── CALLOUTS ─────────────────────────────── */
+.callout{border-radius:6px;padding:14px 18px;margin:20px 0;display:flex;gap:12px;align-items:flex-start;font-size:13px;line-height:1.6;}
+.callout-icon{font-size:15px;flex-shrink:0;margin-top:1px;}
+.callout.tip{background:rgba(194,34,53,0.06);border:1px solid rgba(194,34,53,0.2);color:var(--text);}
+.callout.tip .callout-icon::before{content:'💡';}
+.callout.warn{background:#FFF9EC;border:1px solid #F0D070;color:#7A5C00;}
+.callout.warn .callout-icon::before{content:'⚠';}
+.callout.info{background:#EDF4FF;border:1px solid #B8D4FF;color:#1A4A8A;}
+.callout.info .callout-icon::before{content:'ℹ';}
+.callout.alert{background:var(--black);border:1px solid #333;color:var(--gray);}
+.callout.alert .callout-icon::before{content:'🔴';}
+.callout.compliance{background:#F0FAF7;border:1px solid #9FD9CC;color:#0E5A4F;}
+.callout.compliance .callout-icon::before{content:'🛡';}
+.callout.star{background:#fff;border:1px solid var(--red);border-left:4px solid var(--red);color:var(--text);}
+.callout.star .callout-icon::before{content:'⭐';}
+.callout b,.callout strong{color:inherit;}
+
+/* steps */
+.steps{list-style:none;padding:0;margin:12px 0;}
+.steps li{display:flex;gap:14px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--muted);line-height:1.55;}
+.steps li:last-child{border-bottom:none;}
+.steps li .step-n{background:var(--red);color:var(--white);font-size:11px;font-weight:700;min-width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.steps li strong{color:var(--text);}
+
+/* bullets */
+.bullets{list-style:none;padding:0;margin:10px 0;}
+.bullets li{font-size:14px;color:var(--muted);padding:5px 0 5px 18px;position:relative;line-height:1.55;}
+.bullets li::before{content:'→';position:absolute;left:0;color:var(--red);font-size:12px;top:6px;}
+.bullets li strong{color:var(--text);}
+
+/* cards */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin:16px 0;}
+.card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:16px;}
+.card .c-icon{font-size:22px;margin-bottom:8px;}
+.card .c-title{font-size:14px;font-weight:700;color:var(--black);margin-bottom:4px;}
+.card .c-desc{font-size:12px;color:var(--muted);line-height:1.5;}
+
+/* ─── HOJE × COPILOT ───────────────────────── */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0;}
+.compare-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:16px;display:flex;flex-direction:column;}
+.compare-card .cc-label{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.compare-card.old{background:#FAF8F5;}
+.compare-card.old .cc-label{color:#999;}
+.compare-card.new{border-color:rgba(194,34,53,0.35);}
+.compare-card.new .cc-label{color:var(--red);}
+.compare-card ul{list-style:none;padding:0;flex:1;}
+.compare-card li{font-size:13px;color:var(--muted);padding:4px 0 4px 16px;position:relative;line-height:1.5;}
+.compare-card.old li::before{content:'·';position:absolute;left:3px;color:#bbb;font-weight:700;}
+.compare-card.new li::before{content:'✓';position:absolute;left:0;color:var(--red);font-size:11px;top:5px;}
+.compare-card li strong{color:var(--text);}
+.cc-foot{margin-top:12px;padding-top:10px;border-top:1px dashed var(--border);font-size:11px;font-weight:700;letter-spacing:0.3px;}
+.compare-card.new .cc-foot{color:var(--red);}
+.compare-card.old .cc-foot{color:#aaa;}
+
+/* prompt box */
+.prompt-box{background:#1A1A1A;border-radius:6px;padding:14px 18px;margin:12px 0;font-size:13px;color:#C9D1D9;font-family:'Courier New',monospace;line-height:1.7;border-left:3px solid var(--red);}
+.prompt-box .pb-role{color:#E0707E;font-weight:700;}
+.prompt-label{font-size:9px;font-weight:700;color:var(--red);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;}
+
+/* demo */
+.demo-block{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--red);border-radius:0 8px 8px 0;padding:16px 18px;margin:12px 0;}
+.demo-block .db-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap;}
+.demo-block .db-num{background:var(--red);color:var(--white);font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;}
+.demo-block .db-title{font-size:14px;font-weight:700;color:var(--black);}
+.demo-block .db-time{margin-left:auto;font-size:11px;color:var(--muted);}
+.demo-block p{margin-bottom:6px;font-size:13px;}
+
+/* challenge */
+.challenge-box{background:var(--black);border-radius:10px;padding:24px;margin-top:20px;}
+.challenge-box .ch-title{font-size:13px;font-weight:700;color:var(--red);margin-bottom:16px;letter-spacing:0.5px;}
+.ch-day{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-bottom:1px solid #1f1f1f;}
+.ch-day:last-child{border-bottom:none;padding-bottom:0;}
+.day-pill{background:rgba(194,34,53,0.15);color:var(--red);font-size:10px;font-weight:700;padding:2px 9px;border-radius:99px;white-space:nowrap;margin-top:2px;flex-shrink:0;}
+.day-text{font-size:13px;color:#999;line-height:1.5;}
+.day-text strong{color:#ddd;}
+
+/* level rail */
+.level-rail{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:20px 0 8px;}
+.level-step{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:16px 14px;position:relative;overflow:hidden;}
+.level-step::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;}
+.level-step.l1::before{background:var(--n1);}
+.level-step.l2::before{background:var(--n2);}
+.level-step.l3::before{background:var(--n3);}
+.level-step.l4::before{background:var(--n4);}
+.level-step .ls-emoji{font-size:20px;}
+.level-step .ls-num{font-size:10px;font-weight:700;letter-spacing:1px;color:var(--muted);margin-top:6px;}
+.level-step .ls-name{font-size:15px;font-weight:800;color:var(--black);letter-spacing:-0.3px;margin:2px 0 6px;}
+.level-step .ls-desc{font-size:11.5px;color:var(--muted);line-height:1.45;}
+.level-step .ls-time{font-size:11px;font-weight:700;margin-top:10px;display:inline-block;padding:3px 8px;border-radius:99px;background:var(--bg2);color:#444;}
+.level-step.you{box-shadow:0 0 0 2px var(--n1);}
+.level-step.goal{box-shadow:0 0 0 2px var(--n2);}
+.ls-flag{position:absolute;top:10px;right:10px;font-size:8.5px;font-weight:800;letter-spacing:0.5px;text-transform:uppercase;padding:2px 7px;border-radius:99px;color:#fff;}
+.ls-flag.you{background:var(--n1);}
+.ls-flag.goal{background:var(--n2);}
+
+/* schedule */
+.sched{margin:16px 0;border-left:2px solid var(--border);padding-left:0;}
+.sched-row{display:flex;gap:14px;padding:9px 0 9px 18px;position:relative;border-bottom:1px solid var(--border);}
+.sched-row::before{content:'';position:absolute;left:-5px;top:15px;width:8px;height:8px;border-radius:50%;background:var(--red);}
+.sched-row.dim::before{background:#ccc;}
+.sched-time{font-size:12px;font-weight:700;color:var(--black);min-width:90px;}
+.sched-what{font-size:13px;color:var(--muted);line-height:1.5;}
+.sched-what strong{color:var(--text);}
+
+/* tool legend pill */
+.toolpill{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.3px;padding:2px 8px;border-radius:99px;margin:0 4px 4px 0;background:#E5F0FB;color:#1A5FB4;}
+
+/* bottom nav */
+#bottomnav{position:fixed;bottom:0;left:var(--sidebar-w);right:0;background:var(--white);border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:12px 64px;z-index:150;}
+#bottomnav .nav-prev,.nav-next{display:flex;align-items:center;gap:8px;padding:9px 20px;border-radius:6px;border:1px solid var(--border);font-size:13px;font-weight:600;cursor:pointer;background:var(--white);color:var(--text);transition:all 0.15s;}
+#bottomnav .nav-prev:hover{background:var(--bg2);}
+#bottomnav .nav-next{background:var(--red);color:var(--white);border-color:var(--red);}
+#bottomnav .nav-next:hover{background:#a81d2d;}
+#bottomnav .nav-prev:disabled,#bottomnav .nav-next:disabled{opacity:0.3;cursor:default;}
+#bottomnav .nav-counter{font-size:13px;color:var(--muted);}
+
+@media (max-width: 900px){
+  #sidebar{display:none;}
+  #content{margin-left:0;}
+  #bottomnav{left:0;padding:12px 20px;}
+  .bloco{padding:32px 20px 110px;}
+  .bloco h1{font-size:30px;}
+  .level-rail{grid-template-columns:1fr 1fr;}
+  .compare,.card-grid{grid-template-columns:1fr;}
+  #topbar .top-nav{display:none;}
+  #topbar .brand{width:auto;}
+}
+</style>
+</head>
+<body>
+<style>
+.kbd{display:inline-block;font-size:12px;font-weight:600;background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:1px 7px;color:var(--text);white-space:nowrap;}
+.tag-soft{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.3px;padding:2px 8px;border-radius:99px;background:#FCEEC8;color:#7A5C00;margin-left:6px;vertical-align:middle;}
+.tech-applied{display:inline-block;font-size:9px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:2px 8px;border-radius:99px;background:rgba(194,34,53,0.1);color:var(--red);margin-bottom:6px;}
+.linklist a{display:block;padding:7px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text);text-decoration:none;}
+.linklist a:last-child{border-bottom:none;}
+.linklist a span{color:var(--muted);font-size:12px;}
+.linklist a b{color:var(--red);}
+.src{font-size:11px;color:#999;font-style:italic;margin-top:6px;}
+/* faça comigo — screencast em texto */
+.fc{border:1px solid var(--border);border-radius:10px;background:var(--white);margin:16px 0;overflow:hidden;}
+.fc-head{display:flex;align-items:center;gap:9px;background:#0D0D0D;padding:9px 15px;}
+.fc-head .fc-live{font-size:9px;font-weight:800;letter-spacing:0.8px;text-transform:uppercase;color:#fff;background:var(--red);border-radius:99px;padding:3px 9px;display:flex;align-items:center;gap:5px;}
+.fc-head .fc-live::before{content:'';width:6px;height:6px;border-radius:50%;background:#fff;}
+.fc-head .fc-title{font-size:12px;font-weight:700;color:#fff;letter-spacing:0.2px;}
+.fc-head .fc-app{margin-left:auto;font-size:10px;font-weight:700;color:#bbb;letter-spacing:0.5px;text-transform:uppercase;}
+.fc-body{padding:6px 16px 14px;}
+.fc-step{display:grid;grid-template-columns:74px 1fr;gap:13px;padding:11px 0;border-bottom:1px dashed var(--border);align-items:start;}
+.fc-step:last-child{border-bottom:none;}
+.fc-k{font-size:9px;font-weight:800;letter-spacing:0.7px;text-transform:uppercase;color:var(--red);padding-top:3px;}
+.fc-k.click{color:var(--ms);}
+.fc-k.see{color:#1C8C8C;}
+.fc-c{font-size:13.5px;color:#333;line-height:1.6;}
+.fc-c b{color:var(--black);}
+.fc-prompt{background:#1A1A1A;border-radius:6px;padding:9px 13px;font-size:12.5px;color:#C9D1D9;font-family:'Courier New',monospace;line-height:1.6;border-left:3px solid var(--red);}
+/* chips de UI real */
+.ui{display:inline-block;font-size:11px;font-weight:700;background:#EEF1F6;border:1px solid #D4DBE6;border-radius:5px;padding:1px 7px;color:#2A3B57;white-space:nowrap;}
+.ui.agent{background:#F3ECFB;border-color:#DCC9F2;color:#5B2A9E;}
+.path{font-size:12px;color:var(--muted);}
+.path b{color:var(--text);}
+/* stat cards (estavam sem estilo) */
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0;}
+.stat{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:16px 16px;border-top:3px solid var(--red);}
+.stat .s-num{font-size:30px;font-weight:800;color:var(--black);letter-spacing:-1px;line-height:1;}
+.stat .s-label{font-size:12px;color:var(--muted);line-height:1.45;margin-top:7px;}
+.stat .s-label strong{color:var(--text);}
+/* gráfico de gap teórico × observado */
+.gap-chart{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin:16px 0;}
+.gap-row{margin:14px 0;}
+.gap-row .gap-cat{font-size:13px;font-weight:700;color:var(--black);margin-bottom:7px;display:flex;justify-content:space-between;}
+.gap-bar{position:relative;height:26px;background:var(--bg2);border-radius:6px;overflow:hidden;}
+.gap-bar .gb-theo{position:absolute;top:0;left:0;height:100%;background:#Bcd4f3;background:#BBD4F3;border-radius:6px;}
+.gap-bar .gb-obs{position:absolute;top:0;left:0;height:100%;background:var(--red);border-radius:6px;display:flex;align-items:center;}
+.gap-bar .gb-tag{position:absolute;top:50%;transform:translateY(-50%);font-size:10px;font-weight:800;color:#fff;white-space:nowrap;}
+.gap-legend{display:flex;gap:18px;margin-top:6px;font-size:11px;color:var(--muted);}
+.gap-legend span{display:flex;align-items:center;gap:6px;}
+.gap-legend i{width:11px;height:11px;border-radius:3px;display:inline-block;}
+.passo h3{color:var(--red);}
+</style>
+
+<div id="topbar">
+  <div class="brand">
+    <div class="b-logo-wrap">
+      <div class="b-logo-text">Blenduca<span class="dot">.</span></div>
+      <div class="b-sub">Edwards · Dia de IA · Líderes</div>
+    </div>
+  </div>
+  <div class="top-nav">
+    <button class="top-nav-btn active" onclick="goTo(0)">INÍCIO</button>
+    <button class="top-nav-btn" onclick="goTo(1)">MERCADO</button>
+    <button class="top-nav-btn" onclick="goTo(5)">TÉCNICAS</button>
+    <button class="top-nav-btn" onclick="goTo(6)">O COPILOT</button>
+    <button class="top-nav-btn" onclick="goTo(12)">FERRAMENTAS</button>
+    <button class="top-nav-btn" onclick="goTo(17)">AGENTES</button>
+    <button class="top-nav-btn" onclick="goTo(18)">APLICAR</button>
+  </div>
+  <div class="dots" id="dots"></div>
+</div>
+
+<div id="sidebar">
+  <div class="sidebar-section-label">Abertura</div>
+  <div class="sidebar-item active" onclick="goTo(0)" data-idx="0"><span class="si-num">⬤</span><span class="si-title">Visão Geral & Cronograma</span></div>
+
+  <div class="sidebar-section-label" style="margin-top:8px;"><span class="lv-chip" style="background:var(--n1)"></span>Despertar · Panorama</div>
+  <div class="sidebar-item" onclick="goTo(1)" data-idx="1"><span class="si-num">01</span><span class="si-title">O Mercado de IA hoje</span></div>
+  <div class="sidebar-item" onclick="goTo(2)" data-idx="2"><span class="si-num">02</span><span class="si-title">O que já se faz com IA</span></div>
+  <div class="sidebar-item" onclick="goTo(3)" data-idx="3"><span class="si-num">03</span><span class="si-title">4 Níveis & Mentalidade</span></div>
+
+  <div class="sidebar-section-label" style="margin-top:8px;"><span class="lv-chip" style="background:var(--n1)"></span>Despertar · Fundamentos</div>
+  <div class="sidebar-item" onclick="goTo(4)" data-idx="4"><span class="si-num">04</span><span class="si-title">Modelos no Copilot</span></div>
+  <div class="sidebar-item" onclick="goTo(5)" data-idx="5"><span class="si-num">05</span><span class="si-title">Técnicas de Prompt</span></div>
+
+  <div class="sidebar-section-label" style="margin-top:8px;"><span class="lv-chip" style="background:var(--n2)"></span>O Copilot por Dentro</div>
+  <div class="sidebar-item" onclick="goTo(6)" data-idx="6"><span class="si-num">06</span><span class="si-title">Novo chat: modos, @ e /</span></div>
+  <div class="sidebar-item" onclick="goTo(7)" data-idx="7"><span class="si-num">07</span><span class="si-title">Configurações & Fontes</span></div>
+  <div class="sidebar-item" onclick="goTo(8)" data-idx="8"><span class="si-num">08</span><span class="si-title">Agentes prontos</span></div>
+  <div class="sidebar-item" onclick="goTo(9)" data-idx="9"><span class="si-num">09</span><span class="si-title">Tarefas agendadas</span></div>
+  <div class="sidebar-item" onclick="goTo(10)" data-idx="10"><span class="si-num">10</span><span class="si-title">Criar: imagens & vídeos</span></div>
+  <div class="sidebar-item" onclick="goTo(11)" data-idx="11"><span class="si-num">11</span><span class="si-title">Copilot Notebooks</span></div>
+
+  <div class="sidebar-section-label" style="margin-top:8px;"><span class="lv-chip" style="background:var(--n2)"></span>Copilot nas Ferramentas</div>
+  <div class="sidebar-item" onclick="goTo(12)" data-idx="12"><span class="si-num">12</span><span class="si-title">Reuniões → Ata <span class="si-star">★</span></span></div>
+  <div class="sidebar-item" onclick="goTo(13)" data-idx="13"><span class="si-num">13</span><span class="si-title">E-mail & Caixa de Entrada</span></div>
+  <div class="sidebar-item" onclick="goTo(14)" data-idx="14"><span class="si-num">14</span><span class="si-title">Documentos & Relatórios</span></div>
+  <div class="sidebar-item" onclick="goTo(15)" data-idx="15"><span class="si-num">15</span><span class="si-title">Dados & Planilhas</span></div>
+  <div class="sidebar-item" onclick="goTo(16)" data-idx="16"><span class="si-num">16</span><span class="si-title">Apresentações</span></div>
+
+  <div class="sidebar-section-label" style="margin-top:8px;"><span class="lv-chip" style="background:var(--n2)"></span>Copilot Studio · Avançado</div>
+  <div class="sidebar-item" onclick="goTo(17)" data-idx="17"><span class="si-num">17</span><span class="si-title">Criar um Agente <span class="si-star">★</span></span></div>
+
+  <div class="sidebar-section-label" style="margin-top:8px;"><span class="lv-chip" style="background:var(--n4)"></span>Aplicar & Continuar</div>
+  <div class="sidebar-item" onclick="goTo(18)" data-idx="18"><span class="si-num">18</span><span class="si-title">Roadmap 7 · 30 · 90</span></div>
+  <div class="sidebar-item" onclick="goTo(19)" data-idx="19"><span class="si-num">🎯</span><span class="si-title">Desafio 7 Dias</span></div>
+  <div class="sidebar-item" onclick="goTo(20)" data-idx="20"><span class="si-num">🛡</span><span class="si-title">Boas Práticas, FAQ & Recursos</span></div>
+</div>
+
+<div id="content">
+
+  <!-- 0 — VISÃO GERAL -->
+  <div class="bloco active" data-idx="0">
+    <div class="bloco-eyebrow">Blenduca · B'Corp · Edwards Lifesciences</div>
+    <h1>Dia de IA<br>Workshop de Líderes.</h1>
+    <div class="bloco-subtitle">Do panorama do mercado à prática no Copilot, no seu dia a dia</div>
+    <div class="time-badge">⏱ 8h30–12h30 · Presencial · São Paulo</div>
+    <div class="time-badge">👥 20 líderes seniores</div>
+    <div class="red-rule"></div>
+
+    <p class="lead">Este material acompanha a manhã de IA da Edwards LATAM. A jornada vai do <strong>cenário de mercado</strong> (o que existe, quem lidera, o que já se faz) aos <strong>fundamentos</strong> (modelos certos, prompts que funcionam) e à <strong>aplicação real no Microsoft 365 Copilot</strong> (licença Business Premium + Copilot) — com passo a passo e prompts prontos.</p>
+
+    <div class="callout star">
+      <div class="callout-icon"></div>
+      <div><strong>O objetivo, na voz do RH:</strong> que todos saiam sentindo evolução e no mesmo nível — experimentando no dia, levando para a rotina, e gerando cases reais depois do workshop.</div>
+    </div>
+
+    <h2>O ponto de virada: de chat a agente</h2>
+    <p>Vale entender o que mudou na IA da Microsoft, porque muda tudo o que veremos hoje:</p>
+    <ul class="bullets">
+      <li><strong>2023–2024:</strong> o Copilot era basicamente um chat de perguntas e respostas. Você pedia, ele respondia, e você <em>copiava e colava</em> no Word.</li>
+      <li><strong>2025:</strong> ficou mais inteligente.</li>
+      <li><strong>2026:</strong> virou de fato um <strong>agente</strong> — executa tarefas e mostra o que está fazendo <em>dentro</em> de Word, Excel, PowerPoint, Outlook e Teams. Ele não devolve texto para você colar: ele <strong>faz por você</strong>.</li>
+    </ul>
+    <div class="callout tip"><div class="callout-icon"></div><div><strong>Como este material funciona hoje:</strong> formato <strong>"faça comigo"</strong>. Em cada ferramenta você verá o <span class="ui">clique</span>, o <span class="prompt-label" style="display:inline">prompt</span> exato e o resultado — para repetir ao vivo, na sua conta, com algo real do seu trabalho.</div></div>
+
+    <h2>Como a manhã se organiza</h2>
+    <div class="card-grid">
+      <div class="card"><div class="c-icon">🌍</div><div class="c-title">Panorama</div><div class="c-desc">O mercado de IA, o ranking das ferramentas e o que já se faz na prática</div></div>
+      <div class="card"><div class="c-icon">🌅</div><div class="c-title">Fundamentos</div><div class="c-desc">Os modelos certos do Copilot e as técnicas de prompt que mudam o resultado</div></div>
+      <div class="card"><div class="c-icon">🧩</div><div class="c-title">O Copilot por dentro</div><div class="c-desc">Chat, Fontes, Agentes, Tarefas, Criar e Notebooks</div></div>
+      <div class="card"><div class="c-icon">🛠</div><div class="c-title">Nas ferramentas</div><div class="c-desc">Faça comigo em Teams, Outlook, Word, Excel e PowerPoint</div></div>
+      <div class="card"><div class="c-icon">🏗</div><div class="c-title">Criar agentes</div><div class="c-desc">Copilot Studio: um assistente que responde e age por você</div></div>
+    </div>
+
+    <h2>Cronograma</h2>
+    <h3 style="color:var(--n1)">🌅 Manhã — Workshop de Líderes</h3>
+    <div class="sched">
+      <div class="sched-row"><div class="sched-time">08h30</div><div class="sched-what"><strong>Abertura</strong> — boas-vindas, o ponto de virada (chat → agente) e o mapa do dia</div></div>
+      <div class="sched-row"><div class="sched-time">08h45</div><div class="sched-what"><strong>Parte 1 · Despertar</strong> — mercado e dados (Bloco 01–02), 4 níveis (03), modelos e técnicas (04–05)</div></div>
+      <div class="sched-row"><div class="sched-time">09h45</div><div class="sched-what"><strong>O Copilot por dentro</strong> — chat, Fontes, agentes, tarefas agendadas, Criar e Notebooks (Blocos 06–11)</div></div>
+      <div class="sched-row dim"><div class="sched-time">10h15</div><div class="sched-what">Pausa — café</div></div>
+      <div class="sched-row"><div class="sched-time">10h30</div><div class="sched-what"><strong>Parte 2 · Faça comigo</strong> — Teams, Outlook, Word, Excel e PowerPoint (Blocos 12–16)</div></div>
+      <div class="sched-row"><div class="sched-time">11h45</div><div class="sched-what"><strong>Avançado</strong> — criar um Agente no Copilot Studio (Bloco 17)</div></div>
+      <div class="sched-row"><div class="sched-time">12h15</div><div class="sched-what"><strong>Roadmap 7·30·90</strong> e compromissos (Bloco 18)</div></div>
+      <div class="sched-row dim"><div class="sched-time">12h30</div><div class="sched-what">Encerramento da manhã · almoço</div></div>
+    </div>
+
+    <h3 style="color:var(--n4)">🌆 Tarde — Treinamento do Time</h3>
+    <div class="sched">
+      <div class="sched-row dim"><div class="sched-time">14h00</div><div class="sched-what"><strong>Treinamento prático</strong> para o time (presencial + ao vivo no Teams) — prompts, Copilot nos apps e agentes, no dia a dia administrativo</div></div>
+      <div class="sched-row dim"><div class="sched-time">15h00</div><div class="sched-what">Encerramento · Q&amp;A</div></div>
+    </div>
+
+    <div class="callout tip"><div class="callout-icon"></div><div><strong>Como usar este material:</strong> seu guia durante e depois do dia — com "hoje × com Copilot", passo a passo e prompts prontos para copiar.</div></div>
+  </div>
+
+  <!-- 1 — MERCADO DE IA -->
+  <div class="bloco" data-idx="1">
+    <div class="nivel-tag" style="background:var(--n1)">🌍 Despertar · Panorama</div><br>
+    <div class="bloco-eyebrow">Bloco 01</div>
+    <h1>O Mercado<br>de IA hoje.</h1>
+    <div class="bloco-subtitle">Onde estamos, quem lidera e onde acompanhar</div>
+    <div class="time-badge">⏱ 12 minutos</div>
+    <div class="red-rule"></div>
+
+    <p>A IA generativa deixou de ser tendência e virou infraestrutura de trabalho. Os números explicam a urgência:</p>
+    <div class="stat-row">
+      <div class="stat"><div class="s-num">88%</div><div class="s-label">das organizações já usam IA em ao menos uma área; 72% usam IA generativa</div></div>
+      <div class="stat"><div class="s-num">38%</div><div class="s-label">dos profissionais do conhecimento usam IA generativa <strong>todos os dias</strong> (era 11% em 2024)</div></div>
+      <div class="stat"><div class="s-num">~41%</div><div class="s-label">de adoção do Microsoft Copilot entre clientes corporativos do Microsoft 365</div></div>
+    </div>
+    <div class="src">Fontes: McKinsey, State of AI · IDC Worldwide AI Spending (gasto global ~US$ 301 bi em 2026). Números de pesquisa, arredondados.</div>
+
+    <h2>Quem lidera — um "tripolo" no topo</h2>
+    <p>O mercado de modelos convergiu para três grandes nomes na fronteira, com fortes concorrentes logo atrás. Para um líder, o que importa é reconhecer as ferramentas que vai encontrar:</p>
+    <table>
+      <thead><tr><th>Ferramenta</th><th>Empresa</th><th>Conhecida por</th></tr></thead>
+      <tbody>
+        <tr><td>ChatGPT</td><td>OpenAI</td><td>Uso geral, escrita, multimodal — popularizou a IA generativa</td></tr>
+        <tr><td>Claude</td><td>Anthropic</td><td>Raciocínio, textos longos, trabalho analítico</td></tr>
+        <tr><td>Gemini</td><td>Google</td><td>Integrado ao Google Workspace</td></tr>
+        <tr><td>Copilot <span class="toolpill">o de vocês</span></td><td>Microsoft</td><td>IA no Microsoft 365, sobre modelos GPT da OpenAI, com dados protegidos</td></tr>
+        <tr><td>Perplexity · Grok · DeepSeek</td><td>Outros</td><td>Busca com fontes · redes sociais · alternativas de baixo custo</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout info">
+      <div class="callout-icon"></div>
+      <div><strong>Não existe "a melhor IA" — existe a melhor para a tarefa.</strong> Os líderes do ranking trocam a cada poucos meses. O hábito útil é saber <em>onde olhar</em> quando precisar escolher.</div>
+    </div>
+
+    <h2>O dado que importa para um líder</h2>
+    <p>A pesquisa da Anthropic (Economic Index) mediu o que a IA <strong>conseguiria</strong> fazer (capacidade teórica) versus o que as pessoas <strong>de fato</strong> usam no trabalho. A conclusão central: o uso real ainda é uma fração do potencial — e <strong>essa lacuna é a oportunidade que a liderança captura</strong>.</p>
+
+    <div class="gap-chart">
+      <div class="gap-row">
+        <div class="gap-cat"><span>Computação &amp; Matemática</span><span>teórico 94% · uso real 33%</span></div>
+        <div class="gap-bar">
+          <div class="gb-theo" style="width:94%"></div>
+          <div class="gb-obs" style="width:33%"><span class="gb-tag" style="left:8px">33%</span></div>
+        </div>
+      </div>
+      <div class="gap-row">
+        <div class="gap-cat"><span>Escritório &amp; Administrativo</span><span>teórico 90% · uso real ainda baixo</span></div>
+        <div class="gap-bar">
+          <div class="gb-theo" style="width:90%"></div>
+          <div class="gb-obs" style="width:22%"><span class="gb-tag" style="left:8px">parcial</span></div>
+        </div>
+      </div>
+      <div class="gap-legend"><span><i style="background:#BBD4F3"></i> Potencial teórico da IA</span><span><i style="background:var(--red)"></i> Uso observado hoje</span></div>
+    </div>
+    <p style="font-size:13px;color:var(--muted)">A área azul é o que a IA já poderia fazer; a vermelha, o que se usa hoje. Quase tudo que falta preencher é trabalho de escritório — exatamente o de vocês.</p>
+
+    <h3>E quem mais ganha com isso? A gestão.</h3>
+    <div class="stat-row">
+      <div class="stat"><div class="s-num">5,1<span style="font-size:16px">/7</span></div><div class="s-label">ganho médio de produtividade relatado por usuários — "<strong>substancialmente mais produtivo</strong>"</div></div>
+      <div class="stat"><div class="s-num">#1</div><div class="s-label"><strong>Gestão</strong> é o grupo ocupacional com o <strong>maior ganho</strong> de produtividade com IA</div></div>
+      <div class="stat"><div class="s-num">48%</div><div class="s-label">dos ganhos vêm de <strong>ampliar escopo</strong> (fazer mais); 40% de <strong>velocidade</strong></div></div>
+    </div>
+    <div class="src">Fontes: Anthropic Economic Index — "Labor market impacts" (mar/2026) e "What 81,000 people told us" (abr/2026). Números arredondados.</div>
+
+    <div class="callout tip"><div class="callout-icon"></div><div><strong>O recado para a Edwards:</strong> até agora <strong>não há aumento de desemprego</strong> nas funções mais expostas — a história real é de <strong>amplificação</strong>, não substituição. Quem lidera a adoção transforma a lacuna "potencial × uso" em tempo e qualidade.</div></div>
+
+    <h2>Onde acompanhar e onde achar soluções prontas</h2>
+    <div class="linklist">
+      <a href="https://huggingface.co/spaces/lmarena-ai/arena-leaderboard"><b>LMArena (Chatbot Arena)</b> — <span>ranking ao vivo por preferência humana; o topo oscila entre Claude, GPT-5, Gemini e Grok — por isso se consulta o ranking, não a memória</span></a>
+      <a href="https://viverdeia.ai/solucoes"><b>Viver de IA · Soluções</b> — <span>catálogo brasileiro com 100+ soluções de IA prontas (marketing, vendas, RH, operações) para clonar e adaptar</span></a>
+      <a href="https://artificialanalysis.ai"><b>Artificial Analysis</b> — <span>compara qualidade, velocidade e preço dos modelos</span></a>
+      <a href="https://www.microsoft.com/en-us/microsoft-365/roadmap"><b>Microsoft 365 Roadmap</b> — <span>o que está chegando ao Copilot</span></a>
+    </div>
+
+    <div class="callout alert">
+      <div class="callout-icon"></div>
+      <div><strong>O recado dos estudos:</strong> a adoção é altíssima, mas o valor real ainda é raro — e a diferença está na <strong>liderança</strong>. Quem redesenha o processo (em vez de só "usar IA por cima") captura o ganho. Por isso a manhã é com os líderes.</div>
+    </div>
+  </div>
+
+  <!-- 2 — O QUE JÁ SE FAZ -->
+  <div class="bloco" data-idx="2">
+    <div class="nivel-tag" style="background:var(--n1)">🌍 Despertar · Panorama</div><br>
+    <div class="bloco-eyebrow">Bloco 02</div>
+    <h1>O que já se<br>faz com IA.</h1>
+    <div class="bloco-subtitle">O que a pesquisa mostra — e o que está em uso na prática</div>
+    <div class="time-badge">⏱ 12 minutos</div>
+    <div class="red-rule"></div>
+
+    <h2>Os usos mais comuns hoje</h2>
+    <p>Segundo as pesquisas de mercado, os três usos de IA generativa mais frequentes nas empresas são:</p>
+    <div class="stat-row">
+      <div class="stat"><div class="s-num">71%</div><div class="s-label">Criação de conteúdo (textos, e-mails, materiais)</div></div>
+      <div class="stat"><div class="s-num">58%</div><div class="s-label">Geração e apoio a código (áreas técnicas)</div></div>
+      <div class="stat"><div class="s-num">54%</div><div class="s-label">Interação e atendimento a clientes</div></div>
+    </div>
+    <div class="src">Fonte: levantamentos de adoção de IA generativa 2026 (McKinsey e outros). Os ganhos de receita aparecem mais em vendas, estratégia/finanças e desenvolvimento de produto.</div>
+
+    <h2>Casos de uso por área — o que já dá para fazer na Edwards</h2>
+    <table>
+      <thead><tr><th>Área</th><th>O que já dá para fazer</th><th>Exemplo concreto</th></tr></thead>
+      <tbody>
+        <tr><td>Comercial / Sales</td><td>Resumo de contas, preparação de follow-ups, análise de pipeline</td><td>Antes da visita: "resuma o histórico deste hospital e sugira 3 pontos a abordar"</td></tr>
+        <tr><td>Marketing</td><td>Primeiras versões de conteúdo, adaptação de materiais, ideação</td><td>"Crie 3 versões de um comunicado sobre [tema] para públicos diferentes"</td></tr>
+        <tr><td>Finanças / Estratégia</td><td>Consolidação de relatórios, análise de cenários, sumários executivos</td><td>"Compare o desempenho por país e destaque riscos e oportunidades"</td></tr>
+        <tr><td>RH</td><td>Resumo de políticas, apoio a onboarding, triagem de comunicação</td><td>"Responda esta dúvida de política em linguagem simples"</td></tr>
+        <tr><td>Qualidade / Legal</td><td>Revisão documental assistida (com humano no loop)</td><td>"Aponte inconsistências entre estes dois documentos"</td></tr>
+        <tr><td>Operações / Supply</td><td>Análise de dados, relatórios, apoio a previsão</td><td>"O que estes números de estoque indicam para o próximo mês?"</td></tr>
+        <tr><td>Todas</td><td>Atas de reunião, e-mail, documentos, apresentações</td><td>Os ganhos diários que veremos nos blocos 12–16</td></tr>
+      </tbody>
+    </table>
+
+    <h2>O que está em uso na prática (o realista para começar)</h2>
+    <ul class="bullets">
+      <li><strong>Atas e follow-up de reunião</strong> — o ganho mais imediato (e a dor nº 1 de vocês).</li>
+      <li><strong>Resumo e rascunho de e-mails</strong> — recuperar o controle da caixa de entrada.</li>
+      <li><strong>Primeiras versões</strong> de documentos, relatórios e slides.</li>
+      <li><strong>Perguntar aos dados</strong> em linguagem natural no Excel.</li>
+    </ul>
+
+    <div class="callout tip"><div class="callout-icon"></div><div><strong>A lição prática:</strong> não tente automatizar tudo de uma vez. Os cases reais nascem de 2–3 usos diários bem fixados — exatamente o que vamos montar hoje.</div></div>
+  </div>
+
+  <!-- 3 — 4 NÍVEIS & MENTALIDADE -->
+  <div class="bloco" data-idx="3">
+    <div class="nivel-tag" style="background:var(--n1)">🌅 Despertar · Fundamentos</div><br>
+    <div class="bloco-eyebrow">Bloco 03</div>
+    <h1>Os 4 Níveis &<br>a Mentalidade.</h1>
+    <div class="bloco-subtitle">Um termômetro para nivelar — e o destino da manhã</div>
+    <div class="time-badge">⏱ 10 minutos</div>
+    <div class="red-rule"></div>
+
+    <p>Adotar IA é uma jornada. Use os níveis como termômetro pessoal, não como prova. O combinado de hoje: <strong>todos saem sentindo evolução, com o Nível 2 ligado — e ainda damos uma entrada no Nível 3 (Sistematização)</strong>, quando criarmos um agente no Copilot Studio (Bloco 17).</p>
+    <div class="level-rail">
+      <div class="level-step l1 you"><span class="ls-flag you">Início</span><div class="ls-emoji">🌅</div><div class="ls-num">NÍVEL 1</div><div class="ls-name">Despertar</div><div class="ls-desc">Primeiros prompts, uso pontual</div><span class="ls-time">1–2 h/sem</span></div>
+      <div class="level-step l2 goal"><span class="ls-flag goal">Meta do dia</span><div class="ls-emoji">🚀</div><div class="ls-num">NÍVEL 2</div><div class="ls-name">Amplificação</div><div class="ls-desc">Copilot no seu fluxo real</div><span class="ls-time">3–4 h/sem</span></div>
+      <div class="level-step l3 goal"><span class="ls-flag goal">Vamos provar</span><div class="ls-emoji">🏗</div><div class="ls-num">NÍVEL 3</div><div class="ls-name">Sistematização</div><div class="ls-desc">Rotinas, tarefas agendadas e o 1º agente</div><span class="ls-time">5–15 h/sem</span></div>
+      <div class="level-step l4"><div class="ls-emoji">🌐</div><div class="ls-num">NÍVEL 4</div><div class="ls-name">Integração</div><div class="ls-desc">IA integrada à operação</div><span class="ls-time">Exponencial</span></div>
+    </div>
+    <p style="font-size:13px;color:var(--muted)">Não viramos especialistas em uma manhã — mas vamos <strong>encostar</strong> no Nível 3 para vocês verem que sistematizar (criar um agente que trabalha sozinho) está ao alcance.</p>
+
+    <h2>Mentalidade IA-First: foco no resultado</h2>
+    <div class="compare">
+      <div class="compare-card old"><div class="cc-label">Foca na ferramenta</div><ul><li>"Qual IA é a melhor?"</li><li>Usa em tarefas soltas</li><li>Resultado depende do dia</li></ul></div>
+      <div class="compare-card new"><div class="cc-label">Foca no resultado</div><ul><li><strong>"Qual problema eu quero resolver?"</strong></li><li>Integra a IA ao fluxo</li><li>Resultado consistente e replicável</li></ul></div>
+    </div>
+    <div class="callout tip"><div class="callout-icon"></div><div><strong>A IA amplifica, não substitui.</strong> Sua experiência no mercado e nos hospitais é o ativo — o Copilot multiplica.</div></div>
+  </div>
+
+  <!-- 4 — MODELOS NO COPILOT -->
+  <div class="bloco" data-idx="4">
+    <div class="nivel-tag" style="background:var(--n1)">🌅 Despertar · Fundamentos</div><br>
+    <div class="bloco-eyebrow">Bloco 04</div>
+    <h1>Modelos no Copilot<br>— quando usar cada um.</h1>
+    <div class="bloco-subtitle">O seletor de modos muda a qualidade — e quase ninguém usa</div>
+    <div class="time-badge">⏱ 15 minutos</div>
+    <div class="red-rule"></div>
+
+    <p>Para acessar, entre em <span class="ui">m365.cloud.microsoft</span> com a conta de trabalho. Se sua conta tem Copilot, embaixo aparece seu nome e o selo <span class="ui agent">M365 Copilot (Premium)</span> — a experiência completa de vocês. No alto da caixa de mensagem há um seletor que troca o "cérebro" do Copilot. Escolher o modo certo é a diferença entre uma resposta rasa e uma análise sólida.</p>
+
+    <h2>O motor</h2>
+    <p>O Copilot roda sobre <strong>modelos de fronteira</strong>, com <strong>dados protegidos pela empresa</strong>. No seletor de modelos do ambiente de vocês aparecem, hoje, da OpenAI o <strong>GPT 5.5</strong> e o <strong>GPT 5.2</strong> (cada um em versão Resposta Rápida ou Think Deeper) e, da Anthropic, o <strong>Claude Opus</strong>. Você não precisa decidir: deixe no <span class="ui">Automático</span> que ele escolhe — ou fixe um modelo específico quando quiser.</p>
+
+    <div class="callout tip"><div class="callout-icon"></div><div><strong>O Claude já está no seletor de vocês.</strong> Além do GPT, o menu mostra <span class="ui agent">Opus · Claude</span> (da Anthropic) — é só selecionar. O Claude é reconhecido por raciocínio, textos longos e trabalho analítico. Ter as duas famílias permite <strong>escolher a melhor IA por tarefa</strong>, sem sair do ambiente seguro do M365. (A disponibilidade de cada modelo é definida pela TI/admin.)</div></div>
+
+    <h2>O botão que quase ninguém vê: <span class="ui">Trabalho</span> × <span class="ui">Web</span></h2>
+    <p>No topo do chat há a alternância <strong>Trabalho</strong> (responde com base nos <strong>seus</strong> e-mails, reuniões, chats e arquivos do M365) × <strong>Web</strong> (internet, arquivos que você anexa e conteúdo na tela). Como vocês têm a licença Copilot, a opção <span class="ui">Trabalho</span> está ligada — é ela que torna o Copilot "seu".</p>
+
+    <h2>Os modos — e quando usar (rótulos reais)</h2>
+    <table>
+      <thead><tr><th>Modo</th><th>O que faz</th><th>Quando usar · exemplo Edwards</th></tr></thead>
+      <tbody>
+        <tr><td>Automático</td><td>Padrão. Decide sozinho por quanto tempo pensar</td><td>80% do dia, quando você não quer escolher</td></tr>
+        <tr><td>Resposta Rápida</td><td>Respostas imediatas e diretas</td><td>Resumir um e-mail, rascunho rápido, dúvida simples</td></tr>
+        <tr><td>Think Deeper</td><td>Pensa mais tempo para obter melhores respostas</td><td>Estratégia, análise complexa, documento para o board</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:var(--muted)">No mesmo menu, abaixo dos modos, dá para <strong>fixar um modelo</strong>: <span class="ui">Opus · Claude</span> ou <span class="ui">GPT</span> (5.5 / 5.2), cada um com Resposta Rápida ou Think Deeper.</p>
+
+    <h2>Na lateral esquerda: os <span class="ui agent">Agentes</span></h2>
+    <p>Abaixo do chat ficam agentes prontos: <strong>Pesquisador</strong>, <strong>Analista</strong>, <strong>Workflows (Frontier)</strong> e o <strong>Microsoft 365 Admin</strong>. Veremos os agentes em detalhe no Bloco 08 e a criação de agentes próprios no Bloco 17.</p>
+
+    <div class="fc">
+      <div class="fc-head"><span class="fc-live">ao vivo</span><span class="fc-title">Primeiro contato — pergunte, edite no Pages, vire apresentação</span><span class="fc-app">Copilot Chat</span></div>
+      <div class="fc-body">
+        <div class="fc-step"><div class="fc-k">prompt</div><div class="fc-c"><div class="fc-prompt">Quais são as principais análises que a área de [controladoria / acesso a mercado] deveria acompanhar?</div></div></div>
+        <div class="fc-step"><div class="fc-k click">clique</div><div class="fc-c">Abaixo da resposta, <span class="ui">Editar em Pages</span> → abre um painel à direita. Selecione um trecho e peça <em>"detalhar mais esta seção"</em>; corte a parte conversacional. Você <b>edita junto</b> com ele.</div></div>
+        <div class="fc-step"><div class="fc-k click">clique</div><div class="fc-c">No topo, <span class="ui">Criar</span> → <span class="ui">Apresentação</span>. Ele leva o conteúdo do Pages para o <b>PowerPoint com Copilot</b> e gera os slides.</div></div>
+        <div class="fc-step"><div class="fc-k see">resultado</div><div class="fc-c">Em segundos: rascunho da análise + um deck inicial. Meio caminho andado — você refina, não começa do zero.</div></div>
+      </div>
+    </div>
+
+    <div class="callout warn"><div class="callout-icon"></div><div><strong>Regra prática:</strong> deixe no <span class="ui">Automático</span> e suba para <span class="ui">Think Deeper</span> só no que vale. Os <strong>rótulos mudam</strong> com as atualizações — se o nome na sua tela estiver diferente, a lógica é a mesma.</div></div>
+  </div>
+
+  <!-- 5 — TÉCNICAS -->
+  <div class="bloco" data-idx="5">
+    <div class="nivel-tag" style="background:var(--n1)">🌅 Despertar · Fundamentos</div><br>
+    <div class="bloco-eyebrow">Bloco 05</div>
+    <h1>Técnicas<br>de Prompt.</h1>
+    <div class="bloco-subtitle">R.A.C.E. é a base — e mais 5 técnicas que multiplicam o resultado</div>
+    <div class="time-badge">⏱ 25 minutos</div>
+    <div class="red-rule"></div>
+
+    <h2>A base: R.A.C.E.</h2>
+    <table>
+      <thead><tr><th>Letra</th><th>Significa</th><th>Pergunta que responde</th></tr></thead>
+      <tbody>
+        <tr><td>R · Role</td><td>Papel</td><td>Quem a IA deve "ser"?</td></tr>
+        <tr><td>A · Action</td><td>Ação</td><td>O que fazer exatamente?</td></tr>
+        <tr><td>C · Context</td><td>Contexto</td><td>Cenário, dados e restrições?</td></tr>
+        <tr><td>E · Expectation</td><td>Expectativa</td><td>Formato, tom e resultado?</td></tr>
+      </tbody>
+    </table>
+
+    <h2>As 5 técnicas que amplificam</h2>
+    <div class="demo-block"><div class="db-header"><span class="db-num">01</span><span class="db-title">Dar exemplos (few-shot)</span></div><p>Em vez de <em>descrever</em> o que quer, <strong>mostre</strong> 1–2 exemplos do resultado pronto. <strong>Por que funciona:</strong> o modelo é um reconhecedor de padrões — um bom exemplo transmite tom, estrutura e nível de detalhe que nenhuma instrução abstrata alcança. É a técnica de maior alavancagem quando o <strong>formato</strong> importa. <strong>Como aplicar:</strong> 1–2 exemplos representativos bastam; muitos, ou inconsistentes, fazem ele copiar até os vícios.</p><p style="color:var(--red);font-size:12px;"><strong>Edwards:</strong> "Aqui estão 2 e-mails meus para médicos. Escreva um terceiro no mesmo tom, sobre [tema]."</p></div>
+    <div class="demo-block"><div class="db-header"><span class="db-num">02</span><span class="db-title">Pensar passo a passo (chain of thought)</span></div><p>Peça para <strong>raciocinar e expor as etapas antes de concluir</strong>. <strong>Por que funciona:</strong> separar o "raciocínio" da "resposta" evita o salto direto para uma conclusão errada em tarefas de várias etapas — análise de números, comparação, decisão. <strong>Como aplicar:</strong> "analise passo a passo e só então conclua"; combina com o modo <span class="kbd">Think Deeper</span>. Em tarefas triviais, pule — só adiciona ruído.</p><p style="color:var(--red);font-size:12px;"><strong>Edwards:</strong> "Analise estes números por país passo a passo e só então conclua."</p></div>
+    <div class="demo-block"><div class="db-header"><span class="db-num">03</span><span class="db-title">Refinamento iterativo</span></div><p>Trate a <strong>1ª resposta como rascunho</strong> e conduza com ajustes específicos. <strong>Por que funciona:</strong> é mais barato corrigir do que tentar especificar tudo de uma vez — a conversa é a interface. <strong>Como aplicar:</strong> aponte a <strong>dimensão exata</strong> a mudar (tom, tamanho, foco, público), mantenha o que ficou bom e corrija só a lacuna; não recomece do zero.</p><p style="color:var(--red);font-size:12px;"><strong>Edwards:</strong> "Ficou formal demais para o campo. Deixe direto e em bullets."</p></div>
+    <div class="demo-block"><div class="db-header"><span class="db-num">04</span><span class="db-title">Restrições explícitas</span></div><p>Defina <strong>limites rígidos</strong> e diga o que <strong>não</strong> fazer. <strong>Por que funciona:</strong> restringir o espaço de respostas aumenta a precisão e reduz a alucinação — e, em saúde, é o seu guard-rail de conformidade. <strong>Como aplicar:</strong> regras duras e poucas ("máximo X", "não invente dados fora da planilha"); restrição demais engessa.</p><p style="color:var(--red);font-size:12px;"><strong>Edwards:</strong> "Não faça afirmações clínicas. Não cite preços. Não invente números. Máximo 150 palavras."</p></div>
+    <div class="demo-block"><div class="db-header"><span class="db-num">05</span><span class="db-title">Persona por contexto</span></div><p>Atribua um <strong>papel, expertise e ponto de vista</strong>. <strong>Por que funciona:</strong> a persona condiciona vocabulário, profundidade e prioridades — e uma persona <em>crítica</em> faz o modelo achar as fraquezas do próprio texto (red-team de graça). <strong>Como aplicar:</strong> combine uma persona de <strong>autor</strong> (define a voz) com uma passada de persona <strong>crítica</strong> (estressa o resultado).</p><p style="color:var(--red);font-size:12px;"><strong>Edwards:</strong> "Aja como um VP cético no board e aponte as 3 fraquezas desta proposta."</p></div>
+
+    <h2>Exemplo completo: o mesmo pedido, em 3 estágios</h2>
+    <p>Copie e cole na sua conta e sinta a diferença. A tarefa é a mesma nos três: <strong>preparar um resumo de vendas da LATAM para o board global</strong>.</p>
+
+    <span class="tech-applied">Estágio 1 · prompt comum · modelo Automático</span>
+    <div class="prompt-box"><div class="prompt-label">copie e cole</div>Como estão as vendas da LATAM e o que eu deveria apresentar no board?</div>
+    <p style="font-size:13px;color:var(--muted)">→ Resultado <strong>genérico</strong>: sem foco, sem formato, sem priorizar o que importa.</p>
+
+    <span class="tech-applied">Estágio 2 · modelo robusto + base R.A.C.E.</span>
+    <div class="prompt-box"><div class="prompt-label">selecione GPT 5.5 Think Deeper (ou Opus · Claude) + modo Trabalho · copie e cole</div>
+      <span class="pb-role">(R)</span> Aja como meu diretor de estratégia comercial.<br>
+      <span class="pb-role">(A)</span> Analise o desempenho de vendas da LATAM no último trimestre e prepare um resumo para o board global.<br>
+      <span class="pb-role">(C)</span> Use os dados do arquivo anexado <strong>Vendas_LATAM_2025-2026.xlsx</strong> — vendas da LATAM (Brasil, México, Argentina, Colômbia, Chile e Peru), em US$, de 2025-T1 a 2026-T1. Compare o último trimestre (2026-T1) com os anteriores. Público: VPs globais com pouco tempo, foco em decisões.<br>
+      <span class="pb-role">(E)</span> Em português, no máximo 1 página: 3 destaques, 3 riscos e 1 recomendação, em tópicos curtos.
+    </div>
+    <p style="font-size:13px;color:var(--muted)">→ Resultado <strong>estruturado</strong>, no formato certo, pronto para revisar. O modelo robusto raciocina melhor sobre os números.</p>
+
+    <span class="tech-applied">Estágio 3 · R.A.C.E. + técnicas de amplificação</span>
+    <div class="prompt-box"><div class="prompt-label">mesmo modelo robusto · copie e cole (nada a preencher)</div>
+      Aja como meu diretor de estratégia comercial.<br>
+      <strong>Etapa 1</strong> — Analise o arquivo anexado <strong>Vendas_LATAM_2025-2026.xlsx</strong> (LATAM = Brasil, México, Argentina, Colômbia, Chile e Peru; US$; 2025-T1 a 2026-T1) <strong>passo a passo</strong>: calcule a receita por país e por linha de produto, compare 2026-T1 com os trimestres anteriores e identifique o que cresceu, o que caiu e a provável causa.<br>
+      <strong>Etapa 2</strong> — Escreva um resumo para o board global, em português, em no máximo 1 página: 3 destaques, 3 riscos e 1 recomendação. Use bullets curtos exatamente neste estilo: "• México — receita +18% no trimestre, puxada por TAVR; manter o investimento."<br>
+      <strong>Restrições:</strong> não faça afirmações clínicas, não cite preços, não invente números fora da planilha e não ultrapasse 1 página.<br>
+      <strong>Etapa 3</strong> — Por fim, aja como um VP cético: aponte os 2 pontos mais frágeis do seu próprio resumo e como eu deveria reforçá-los antes da reunião.
+    </div>
+    <p style="font-size:13px;color:var(--muted)">→ Um só prompt, <strong>pronto para colar</strong>, combinando <strong>passo a passo</strong> (Etapa 1), <strong>exemplo de estilo / few-shot</strong> (a frase-modelo da Etapa 2), <strong>restrições</strong> e <strong>persona crítica</strong> (Etapa 3). Depois, <strong>refine</strong> conversando: "ficou formal demais para o campo, deixe mais direto".</p>
+
+    <div class="callout info"><div class="callout-icon"></div><div><strong>Para a demonstração ao vivo:</strong> use a planilha de exemplo <strong>Vendas_LATAM_2025-2026.xlsx</strong> (dados fictícios de vendas, transação a transação). Anexe-a ao Copilot e rode os prompts acima — ela já traz o escopo LATAM explícito (Brasil, México, Argentina, Colômbia, Chile e Peru) e uma aba "Sobre os dados".</div></div>
+
+    <div class="callout tip"><div class="callout-icon"></div><div><strong>Truque do expert:</strong> peça ao Copilot para melhorar seu próprio prompt — "analise meu pedido, pergunte o que faltar e devolva uma versão aprimorada".</div></div>
+    <div class="callout info"><div class="callout-icon"></div><div>Nos blocos 12–16, cada prompt vem marcado com a técnica aplicada <span class="tech-applied">R.A.C.E. + técnica</span> para você ver na prática.</div></div>
+  </div>
+
+  <!-- 6 — NOVO CHAT: MODOS, @ E / -->
+  <div class="bloco" data-idx="6">
+    <div class="nivel-tag" style="background:var(--n2)">🧩 O Copilot por Dentro</div><br>
+    <div class="bloco-eyebrow">Bloco 06</div>
+    <h1>O novo chat:<br>modos, @ e /.</h1>
+    <div class="bloco-subtitle">Os poucos controles da tela que mudam todo o resultado</div>
+    <div class="time-badge">⏱ 18 minutos</div>
+    <div class="red-rule"></div>
+
+    <p>Abra um <strong>novo chat</strong> em <span class="ui">m365.cloud.microsoft</span>. A tela tem poucos controles — e dominar quatro deles já coloca você à frente da maioria.</p>
+
+    <h2>1 · Modelo + <span class="ui">Trabalho</span> × <span class="ui">Web</span></h2>
+    <p>No alto, escolha o modo/modelo (Bloco 04): <span class="ui">Automático</span> no dia a dia, <span class="ui">Think Deeper</span> (ou <span class="ui">Opus · Claude</span>) para analisar. Ao lado, mantenha <span class="ui">Trabalho</span> ligado para ele responder com seus e-mails, reuniões e arquivos; troque para <span class="ui">Web</span> quando quiser a internet aberta.</p>
+
+    <h2>2 · O botão <span class="ui">+</span> — trazer conteúdo</h2>
+    <ul class="bullets">
+      <li><strong>Adicionar conteúdo de trabalho</strong> — puxa e-mails, reuniões e arquivos do M365.</li>
+      <li><strong>Carregar imagens e arquivos</strong> — do seu computador.</li>
+      <li><strong>Anexar arquivos da nuvem</strong> — OneDrive / SharePoint.</li>
+    </ul>
+
+    <h2>3 · <span class="ui">@</span> chama um agente · <span class="ui">/</span> aponta uma fonte</h2>
+    <p>Digite <span class="ui">@</span> e escolha um agente (Pesquisador, Analista…) para ele agir ali mesmo — vemos no Bloco 08. Digite <span class="ui">/</span> e busque pelo nome um <strong>arquivo, e-mail, reunião ou pessoa</strong> para usar como base, sem copiar e colar.</p>
+
+    <div class="fc">
+      <div class="fc-head"><span class="fc-live">ao vivo</span><span class="fc-title">Usar @ e / numa pergunta só</span><span class="fc-app">Copilot Chat</span></div>
+      <div class="fc-body">
+        <div class="fc-step"><div class="fc-k click">clique</div><div class="fc-c">Digite <span class="ui">/</span> e selecione o arquivo <i>Vendas_LATAM_2025-2026.xlsx</i> na lista.</div></div>
+        <div class="fc-step"><div class="fc-k">prompt</div><div class="fc-c"><div class="fc-prompt">@Analista quais 3 países da LATAM merecem atenção neste arquivo e por quê?</div></div></div>
+        <div class="fc-step"><div class="fc-k see">resultado</div><div class="fc-c">O Analista lê a planilha e responde com os países — já com o raciocínio, sem você abrir o Excel.</div></div>
+      </div>
+    </div>
+
+    <h2>4 · <span class="ui">Designer</span> e <span class="ui">Páginas</span></h2>
+    <p>No <span class="ui">+</span> → <span class="ui">Mais</span> aparecem dois espaços de criação: <strong>Páginas</strong> (um documento ao lado do chat, para editar a resposta <em>junto</em> com o Copilot) e <strong>Designer</strong> (criação visual). Em <span class="ui">Todos os agentes</span> você vê a lista completa.</p>
+
+    <div class="callout tip"><div class="callout-icon"></div><div><strong>Boas práticas do chat:</strong> um chat por assunto (o contexto se mantém); use <span class="ui">/</span> em vez de copiar e colar; comece no <span class="ui">Automático</span> e suba para <span class="ui">Think Deeper</span> no que vale; e <strong>refine conversando</strong>, sem recomeçar.</div></div>
+  </div>
+
+  <!-- 7 — CONFIGURAÇÕES & FONTES -->
+  <div class="bloco" data-idx="7">
+    <div class="nivel-tag" style="background:var(--n2)">🧩 O Copilot por Dentro</div><br>
+    <div class="bloco-eyebrow">Bloco 07</div>
+    <h1>Configurações<br>& Fontes.</h1>
+    <div class="bloco-subtitle">Conectar fontes externas — e perguntar à sua agenda e e-mail no chat</div>
+    <div class="time-badge">⏱ 14 minutos</div>
+    <div class="red-rule"></div>
+
+    <p>Com <span class="ui">Trabalho</span> ligado, o Copilot já enxerga seu <strong>Outlook, Teams, OneDrive e SharePoint</strong>. Para ligar serviços de <strong>fora</strong> do M365, vá em <span class="ui">Configurações de chat</span> → <span class="ui">Fontes</span>.</p>
+
+    <h3>Conectar uma fonte</h3>
+    <ol class="steps">
+      <li><span class="step-n">1</span><div>Abra <span class="ui">Configurações de chat</span> → <span class="ui">Fontes</span>.</div></li>
+      <li><span class="step-n">2</span><div>Em <strong>Conectar mais</strong>, escolha o serviço (ex: Google Calendar, Canva) e <strong>autorize</strong> — por permissão, sem entregar senha.</div></li>
+      <li><span class="step-n">3</span><div>Pronto: o Copilot passa a usar aquela fonte para localizar e recuperar conteúdo para você.</div></li>
+    </ol>
+
+    <div class="fc">
+      <div class="fc-head"><span class="fc-live">ao vivo</span><span class="fc-title">Perguntar à agenda e ao e-mail pelo próprio chat</span><span class="fc-app">Copilot Chat · Trabalho</span></div>
+      <div class="fc-body">
+        <div class="fc-step"><div class="fc-k">prompt</div><div class="fc-c"><div class="fc-prompt">Resuma minha agenda da próxima semana e destaque as reuniões que ainda preciso preparar.</div></div></div>
+        <div class="fc-step"><div class="fc-k">prompt</div><div class="fc-c"><div class="fc-prompt">Quais e-mails dos últimos 7 dias ainda dependem de uma resposta minha? Liste em até 5 itens, com prazo.</div></div></div>
+        <div class="fc-step"><div class="fc-k see">resultado</div><div class="fc-c">Ele cruza agenda + caixa de entrada e devolve uma lista priorizada — tudo dentro do chat.</div></div>
+      </div>
+    </div>
+
+    <div class="callout compliance"><div class="callout-icon"></div><div><strong>Realidade Edwards:</strong> quais fontes externas aparecem em <span class="ui">Conectar mais</span> depende do que a TI liberou no tenant. Confirme com o Felipe (ex: Google Calendar).</div></div>
+    <div class="callout info"><div class="callout-icon"></div><div><strong>Segurança:</strong> a conexão é por autorização e pode ser <strong>revogada</strong> a qualquer momento nas mesmas Configurações. No corporativo, o Copilot só acessa o que sua conta já pode ver.</div></div>
+  </div>
+
+  <!-- 8 — AGENTES PRONTOS -->
+  <div class="bloco" data-idx="8">
+    <div class="nivel-tag" style="background:var(--n2)">🧩 O Copilot por Dentro</div><br>
+    <div class="bloco-eyebrow">Bloco 08</div>
+    <h1>Agentes<br>prontos.</h1>
+    <div class="bloco-subtitle">Especialistas que já vêm no Copilot — chame com @</div>
+    <div class="time-badge">⏱ 16 minutos</div>
+    <div class="red-rule"></div>
+
+    <p>Digite <span class="ui">@</span> no chat (ou <span class="ui">+</span> → <span class="ui">Mais</span> → <span class="ui">Todos os agentes</span>) e escolha um especialista para a tarefa:</p>
+    <table>
+      <thead><tr><th>Agente</th><th>O que faz</th><th>Exemplo Edwards</th></tr></thead>
+      <tbody>
+        <tr><td>Pesquisador</td><td>Pesquisa profunda combinando a web com seus dados de trabalho</td><td>"@Pesquisador faça um panorama do mercado de válvulas cardíacas na LATAM, com fontes, e o que muda para nós"</td></tr>
+        <tr><td>Analista</td><td>Análise de dados complexa em arquivos de vários formatos (como um cientista de dados)</td><td>"@Analista analise Vendas_LATAM_2025-2026.xlsx e aponte os 3 maiores riscos por país"</td></tr>
+        <tr><td>Resumo de Reunião</td><td>Resumo de reunião conforme um template (agenda, anotações, tarefas)</td><td>"@Resumo de Reunião gere a ata de hoje no formato decisões + tarefas + responsáveis"</td></tr>
+        <tr><td>PowerPoint</td><td>Cria uma apresentação a partir do seu texto</td><td>"@PowerPoint crie um deck de 6 slides a partir deste documento"</td></tr>
+        <tr><td>Pesquisas · M365 Admin</td><td>Cria/analisa formulários · ajuda a gerenciar o M365 (perfil de TI)</td><td>"@Pesquisas crie um formulário de feedback do treinamento"</td></tr>
+      </tbody>
+    </table>
+
+    <div class="fc">
+      <div class="fc-head"><span class="fc-live">ao vivo</span><span class="fc-title">O Analista lendo a planilha de vendas</span><span class="fc-app">Copilot Chat</span></div>
+      <div class="fc-body">
+        <div class="fc-step"><div class="fc-k click">clique</div><div class="fc-c">Digite <span class="ui">/</span> e selecione <i>Vendas_LATAM_2025-2026.xlsx</i>; depois <span class="ui">@</span> → <span class="ui">Analista</span>.</div></div>
+        <div class="fc-step"><div class="fc-k">prompt</div><div class="fc-c"><div class="fc-prompt">Compare 2026-T1 com os trimestres anteriores: o que cresceu, o que caiu e 3 riscos a observar. Pense passo a passo.</div></div></div>
+        <div class="fc-step"><div class="fc-k see">resultado</div><div class="fc-c">Análise com tendências e riscos (Argentina e Colômbia em queda, Peru subindo) — pronta para virar slide ou e-mail.</div></div>
+      </div>
+    </div>
+
+    <div class="callout star"><div class="callout-icon"></div><div>O <strong>Pesquisador</strong> e o <strong>Analista</strong> são seus dois agentes de elite para a rotina de líder. E dá para <strong>criar os seus próprios</strong> agentes no Copilot Studio — fazemos isso ao vivo no Bloco 17.</div></div>
+  </div>
+
+  <!-- 9 — TAREFAS AGENDADAS -->
+  <div class="bloco" data-idx="9">
+    <div class="nivel-tag" style="background:var(--n2)">🧩 O Copilot por Dentro</div><br>
+    <div class="bloco-eyebrow">Bloco 09</div>
+    <h1>Tarefas<br>agendadas.</h1>
+    <div class="bloco-subtitle">Peça uma vez — o Copilot repete sozinho (a porta do Nível 3)</div>
+    <div class="time-badge">⏱ 10 minutos</div>
+    <div class="red-rule"></div>
+
+    <p>Qualquer prompt útil pode virar <strong>rotina automática</strong>: o Copilot executa no dia e hora que você escolher e avisa por e-mail quando ficar pronto. Isso é <strong>sistematizar</strong> (Nível 3) sem programar nada.</p>
+
+    <div class="fc">
+      <div class="fc-head"><span class="fc-live">ao vivo</span><span class="fc-title">Resumo da agenda, automático, todo domingo</span><span class="fc-app">Copilot Chat</span></div>
+      <div class="fc-body">
+        <div class="fc-step"><div class="fc-k">prompt</div><div class="fc-c"><div class="fc-prompt">Resuma meus compromissos da próxima semana, por dia, e destaque o que preciso preparar.</div></div></div>
+        <div class="fc-step"><div class="fc-k click">clique</div><div class="fc-c">Na barra de ações da resposta, clique em <span class="ui">Agendar esse prompt</span> (ícone de relógio).</div></div>
+        <div class="fc-step"><div class="fc-k click">clique</div><div class="fc-c">Defina <b>domingo</b>, <b>20:00</b>, <b>a cada semana</b> e <b>receber por e-mail</b>. <span class="ui">Salvar</span>.</div></div>
+        <div class="fc-step"><div class="fc-k see">resultado</div><div class="fc-c">Todo domingo à noite chega a semana organizada — sem você pedir de novo.</div></div>
+      </div>
+    </div>
+
+    <h2>Mais ideias para agendar</h2>
+    <ul class="bullets">
+      <li><strong>Segunda, 8h:</strong> "Resuma meus e-mails não lidos e o que depende de mim."</li>
+      <li><strong>Sexta, 17h:</strong> "Resuma o que avançou nas minhas reuniões da semana e as pendências."</li>
+      <li><strong>Dia 1 do mês:</strong> "Liste os principais assuntos do mês anterior nos meus e-mails sobre [hospital / conta]."</li>
+    </ul>
+    <div class="callout info"><div class="callout-icon"></div><div>A disponibilidade do agendamento pode variar conforme a atualização do tenant. Se não aparecer, confirme com o Felipe.</div></div>
+  </div>
+
+  <!-- 10 — CRIAR (IMAGENS & VÍDEOS) -->
+  <div class="bloco" data-idx="10">
+    <div class="nivel-tag" style="background:var(--n2)">🧩 O Copilot por Dentro</div><br>
+    <div class="bloco-eyebrow">Bloco 10</div>
+    <h1>Criar:<br>imagens &amp; vídeos.</h1>
+    <div class="bloco-subtitle">Do conceito visual ao vídeo curto — com prompts no padrão Edwards</div>
+    <div class="time-badge">⏱ 14 minutos</div>
+    <div class="red-rule"></div>
+
+    <p>No <span class="ui">Criar</span> do Copilot você gera <strong>imagem, vídeo, infográfico, história, cartaz</strong> e mais — e ajusta <span class="ui">Estilo</span>, <span class="ui">Marca e cor</span> e formato. Você descreve, ele cria, vocês refinam.</p>
+
+    <h2>Prompts ideais (com as boas práticas)</h2>
+    <span class="tech-applied">R.A.C.E. + Restrições</span>
+    <div class="prompt-box"><div class="prompt-label">Criar → Criar uma imagem</div>Crie uma imagem horizontal para a capa de um comunicado interno sobre inovação e cuidado ao paciente. Estilo corporativo e clean, tons de azul e cinza, sensação de tecnologia com toque humano. Sem texto na imagem, sem logotipos e sem nada que pareça um dispositivo médico real.</div>
+
+    <span class="tech-applied">R.A.C.E. + Persona</span>
+    <div class="prompt-box"><div class="prompt-label">Criar → Criar um infográfico</div>Aja como designer de comunicação interna. Crie um infográfico simples com 3 blocos para explicar ao time a jornada "7 · 30 · 90 dias" de adoção de IA. Tom executivo, visual leve, com espaço para um título. Não invente dados nem percentuais.</div>
+
+    <span class="tech-applied">R.A.C.E. + Restrições</span>
+    <div class="prompt-box"><div class="prompt-label">Criar → Criar um vídeo</div>Crie um vídeo curto (até 30s) de abertura para uma reunião de equipe sobre transformação digital. Visual corporativo, tons sóbrios, música discreta. Sem afirmações sobre produtos ou resultados clínicos.</div>
+
+    <div class="callout tip"><div class="callout-icon"></div><div>Use <span class="ui">Marca e cor</span> / <span class="ui">Kits de marca</span> para manter a identidade visual. Precisa editar o vídeo a fundo? Abra no <strong>Clipchamp</strong> e finalize.</div></div>
+    <div class="callout compliance"><div class="callout-icon"></div><div><strong>Cuidado regulatório:</strong> em medtech, nada gerado por IA pode parecer evidência clínica, resultado de produto ou afirmação médica. Material para HCPs ou público sempre passa por Marketing/Compliance.</div></div>
+  </div>
+
+  <!-- 11 — COPILOT NOTEBOOKS -->
+  <div class="bloco" data-idx="11">
+    <div class="nivel-tag" style="background:var(--n2)">🧩 O Copilot por Dentro</div><br>
+    <div class="bloco-eyebrow">Bloco 11</div>
+    <h1>Copilot<br>Notebooks.</h1>
+    <div class="bloco-subtitle">Reúna as fontes de um assunto e gere material a partir só delas</div>
+    <div class="time-badge">⏱ 14 minutos</div>
+    <div class="red-rule"></div>
+
+    <p>Um <strong>Notebook</strong> junta num só lugar as <strong>fontes de um assunto</strong> — arquivos, páginas, transcrições — e responde <strong>com base apenas nelas</strong>, com citações. É a forma prática de dar "memória de projeto" ao Copilot na versão de vocês.</p>
+
+    <h3>Como montar</h3>
+    <ol class="steps">
+      <li><span class="step-n">1</span><div><strong>Criar</strong> um notebook e dar um nome (ex: "Lançamento Edwards Brasil").</div></li>
+      <li><span class="step-n">2</span><div><strong>Referenciar</strong> as fontes: planilhas, documentos, páginas e transcrições de reunião.</div></li>
+      <li><span class="step-n">3</span><div>Pergunte, ou use a <strong>Criação Rápida</strong> para gerar um material pronto.</div></li>
+    </ol>
+
+    <h2>Criação Rápida — um clique</h2>
+    <div class="card-grid">
+      <div class="card"><div class="c-icon">🎧</div><div class="c-title">Visão geral de áudio</div><div class="c-desc">Um "podcast" que resume o material para ouvir no trânsito</div></div>
+      <div class="card"><div class="c-icon">🧠</div><div class="c-title">Mapa mental</div><div class="c-desc">A estrutura do assunto de forma visual</div></div>
+      <div class="card"><div class="c-icon">📄</div><div class="c-title">Documento / Apresentação</div><div class="c-desc">Resumo executivo ou deck a partir das fontes</div></div>
+      <div class="card"><div class="c-icon">📊</div><div class="c-title">Infográfico (Frontier)</div><div class="c-desc">Os principais números num visual só</div></div>
+    </div>
+
+    <div class="fc">
+      <div class="fc-head"><span class="fc-live">ao vivo</span><span class="fc-title">Do material espalhado ao briefing pronto</span><span class="fc-app">Copilot Notebooks</span></div>
+      <div class="fc-body">
+        <div class="fc-step"><div class="fc-k click">clique</div><div class="fc-c"><span class="ui">Criar</span> → <span class="ui">Referenciar</span> e adicione a planilha de potenciais clientes + a página do projeto + a transcrição da reunião.</div></div>
+        <div class="fc-step"><div class="fc-k">prompt</div><div class="fc-c"><div class="fc-prompt">Resuma os principais insights destas fontes em 5 tópicos, com as citações.</div></div></div>
+        <div class="fc-step"><div class="fc-k click">clique</div><div class="fc-c">Em <span class="ui">Criação Rápida</span>, gere uma <span class="ui">Visão geral de áudio</span> e um <span class="ui">Mapa mental</span>.</div></div>
+        <div class="fc-step"><div class="fc-k see">resultado</div><div class="fc-c">Um briefing consolidado, com áudio e mapa — a partir só das suas fontes, sem "viajar".</div></div>
+      </div>
+    </div>
+
+    <div class="callout tip"><div class="callout-icon"></div><div><strong>Por que importa:</strong> o Notebook responde ancorado nas fontes que você deu — ótimo para consolidar um lançamento, uma conta estratégica ou um dossiê de mercado sem misturar com o resto.</div></div>
+  </div>
+
+  <!-- 12 — REUNIÕES → ATA -->
+  <div class="bloco" data-idx="12">
+    <div class="nivel-tag" style="background:var(--n2)">🛠 Copilot nas Ferramentas · Amplificação</div><br>
+    <div class="bloco-eyebrow">Bloco 12 · ★ destaque do dia</div>
+    <h1>Reuniões →<br>Ata Acionável.</h1>
+    <div class="bloco-subtitle">A maior dor de vocês — passo a passo no Teams</div>
+    <div class="time-badge">⏱ 25 minutos</div>
+    <div class="red-rule"></div>
+
+    <div class="compare">
+      <div class="compare-card old"><div class="cc-label">⏳ Como você faz hoje</div><ul><li>Anota à mão enquanto participa</li><li>Esquece quem ficou com o quê</li><li>A transcrição fica parada</li></ul><div class="cc-foot">Tempo: 30–45 min/reunião</div></div>
+      <div class="compare-card new"><div class="cc-label">⚡ Com o Copilot</div><ul><li>Participa 100% — o Teams grava e transcreve</li><li>Ata com decisões, tarefas e responsáveis</li><li>Recap em <strong>áudio em português</strong></li></ul><div class="cc-foot">Tempo: 2–3 minutos</div></div>
+    </div>
+
+    <div class="passo">
+      <h3>Passo a passo no Teams</h3>
+      <ol class="steps">
+        <li><span class="step-n">1</span><div>Ao iniciar a reunião, clique em <span class="kbd">⋯ Mais</span> → <strong>Gravar e transcrever</strong>. <strong>Sem transcrição não há ata</strong>, em nenhuma licença — combine isso como padrão do time.</div></li>
+        <li><span class="step-n">2</span><div>Participe normalmente. Opcional: adicione o agente <strong>Facilitator</strong>, que toma <strong>notas ao vivo</strong> e captura itens de ação enquanto a reunião acontece.</div></li>
+        <li><span class="step-n">3</span><div>Ao fim, abra a reunião no calendário → aba <strong>Recap</strong>. Além do prompt livre, vocês têm <strong>modelos de resumo prontos</strong> (Resumo Executivo / por Participante) — recurso exclusivo de quem tem a licença Copilot.</div></li>
+        <li><span class="step-n">4</span><div>Use o <span class="kbd">Copilot</span> do Recap com o prompt da ata (abaixo) e revise.</div></li>
+        <li><span class="step-n">5</span><div>Peça o e-mail de follow-up e envie.</div></li>
+      </ol>
+    </div>
+
+    <span class="tech-applied">R.A.C.E. + Restrições explícitas</span>
+    <div class="prompt-box"><div class="prompt-label">Prompt 1 · Ata acionável</div>
+      <span class="pb-role">(R)</span> Aja como meu assistente executivo. <span class="pb-role">(A)</span> A partir da transcrição desta reunião, gere uma ata. <span class="pb-role">(C)</span> Reunião de gestão LATAM; quero clareza sobre decisões e responsáveis. <span class="pb-role">(E)</span> Em português: 1) resumo em 3 linhas; 2) decisões; 3) tabela de tarefas (responsável + prazo); 4) e-mail de follow-up. <strong>Não invente itens que não foram ditos</strong>; se algo ficou em aberto, marque como "a confirmar".
+    </div>
+
+    <span class="tech-applied">R.A.C.E. + Persona</span>
+    <div class="prompt-box"><div class="prompt-label">Prompt 2 · Só o que é meu</div>
+      Aja como meu chefe de gabinete. Da transcrição, extraia <strong>apenas as tarefas que ficaram comigo</strong>, com prazo e prioridade (alta/média/baixa), e sugira em qual dia da semana eu deveria fazer cada uma.
+    </div>
+
+    <div class="fc">
+      <div class="fc-head"><span class="fc-live">ao vivo</span><span class="fc-title">Da transcrição à ata + e-mail</span><span class="fc-app">Teams · Recap</span></div>
+      <div class="fc-body">
+        <div class="fc-step"><div class="fc-k click">no início</div><div class="fc-c"><span class="ui">⋯ Mais</span> → <b>Gravar e transcrever</b>. Opcional: agente <b>Facilitator</b> tomando notas ao vivo.</div></div>
+        <div class="fc-step"><div class="fc-k click">ao fim</div><div class="fc-c">Reunião no calendário → aba <span class="ui">Recap</span> → <span class="ui">Copilot</span>. Cole o Prompt 1.</div></div>
+        <div class="fc-step"><div class="fc-k see">resultado</div><div class="fc-c">Resumo em 3 linhas + decisões + <b>tabela de tarefas com responsável e prazo</b> + e-mail de follow-up pronto.</div></div>
+      </div>
+    </div>
+
+    <div class="callout warn"><div class="callout-icon"></div><div><strong>O erro nº 1:</strong> esquecer de ligar gravação/transcrição no começo. Quem organiza precisa ativar — vale combinar isso como padrão no time.</div></div>
+    <div class="callout info"><div class="callout-icon"></div><div><strong>Idioma:</strong> a transcrição em <strong>português</strong> funciona, mas tem precisão menor que em inglês; reunião com idiomas misturados gera resultado irregular. Sempre revise nomes, prazos e responsáveis. Pré-requisitos oficiais: <em>learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings</em>.</div></div>
+    <div class="callout star"><div class="callout-icon"></div><div><strong>O "momento uau" do dia.</strong> Reunião de 1h vira ata + tarefas + e-mail em menos de 3 minutos.</div></div>
+  </div>
+
+  <!-- 13 — E-MAIL -->
+  <div class="bloco" data-idx="13">
+    <div class="nivel-tag" style="background:var(--n2)">🛠 Copilot nas Ferramentas · Amplificação</div><br>
+    <div class="bloco-eyebrow">Bloco 13</div>
+    <h1>E-mail &<br>Caixa de Entrada.</h1>
+    <div class="bloco-subtitle">Copilot no Outlook — passo a passo</div>
+    <div class="time-badge">⏱ 15 minutos</div>
+    <div class="red-rule"></div>
+
+    <div class="compare">
+      <div class="compare-card old"><div class="cc-label">⏳ Como você faz hoje</div><ul><li>Lê thread de 40 e-mails inteira</li><li>Escreve cada resposta do zero</li><li>Perde o histórico</li></ul><div class="cc-foot">Tempo: a manhã inteira</div></div>
+      <div class="compare-card new"><div class="cc-label">⚡ Com o Copilot</div><ul><li><strong>Resume a thread</strong> e diz o que depende de você</li><li>Rascunha no <strong>tom certo</strong></li><li>Recupera o histórico</li></ul><div class="cc-foot">Tempo: minutos</div></div>
+    </div>
+
+    <div class="passo">
+      <h3>Passo a passo no Outlook</h3>
+      <ol class="steps">
+        <li><span class="step-n">1</span><div>Abra a conversa → botão <span class="kbd">Copilot</span> → <strong>Resumir</strong>.</div></li>
+        <li><span class="step-n">2</span><div>Para responder: <span class="kbd">Copilot</span> → <strong>Rascunhar com o Copilot</strong> e descreva a resposta.</div></li>
+        <li><span class="step-n">3</span><div>Ajuste tom e tamanho ("mais formal", "mais curto") antes de inserir.</div></li>
+        <li><span class="step-n">4</span><div>Revise e envie — sempre confira fatos e nomes.</div></li>
+      </ol>
+    </div>
+
+    <span class="tech-applied">R.A.C.E. + Restrições</span>
+    <div class="prompt-box"><div class="prompt-label">Prompt 1 · Resumo com pendências</div>Resuma esta thread, liste decisões e o que depende de mim com prazos. Máximo 5 bullets. Não inclua o que já foi resolvido.</div>
+
+    <span class="tech-applied">R.A.C.E. + Dar exemplos (few-shot)</span>
+    <div class="prompt-box"><div class="prompt-label">Prompt 2 · Resposta no seu tom</div>Aqui estão 2 e-mails que escrevi (colar). No mesmo tom — cordial, direto, sem jargão — responda a esta mensagem confirmando os próximos passos e propondo uma data.</div>
+
+    <div class="fc">
+      <div class="fc-head"><span class="fc-live">ao vivo</span><span class="fc-title">Voltei de férias — o que é prioridade?</span><span class="fc-app">Outlook · Copilot</span></div>
+      <div class="fc-body">
+        <div class="fc-step"><div class="fc-k click">clique</div><div class="fc-c">Painel <span class="ui">Copilot</span> à direita (modo <span class="ui">Trabalho</span>).</div></div>
+        <div class="fc-step"><div class="fc-k">prompt</div><div class="fc-c"><div class="fc-prompt">Eu estava de férias nas últimas semanas. Me ajude a ficar por dentro do que rolou nos meus e-mails e o que parece mais importante para responder, por prioridade.</div></div></div>
+        <div class="fc-step"><div class="fc-k see">resultado</div><div class="fc-c">Lista por <b>alta / média / baixa prioridade</b>. Você ataca o que importa sem abrir 200 mensagens. Dá para pedir "resuma os e-mails sobre o Hospital [X]" e abrir um e-mail gigante → <span class="ui">Resumir</span> no topo.</div></div>
+      </div>
+    </div>
+
+    <div class="callout info"><div class="callout-icon"></div><div>O Copilot só acessa e-mails que já são seus. O resumo melhora quando suas pastas e o histórico estão acessíveis.</div></div>
+  </div>
+
+  <!-- 14 — DOCUMENTOS -->
+  <div class="bloco" data-idx="14">
+    <div class="nivel-tag" style="background:var(--n2)">🛠 Copilot nas Ferramentas · Amplificação</div><br>
+    <div class="bloco-eyebrow">Bloco 14</div>
+    <h1>Documentos &<br>Relatórios.</h1>
+    <div class="bloco-subtitle">Copilot no Word — passo a passo, inclusive em inglês</div>
+    <div class="time-badge">⏱ 15 minutos</div>
+    <div class="red-rule"></div>
+
+    <div class="compare">
+      <div class="compare-card old"><div class="cc-label">⏳ Como você faz hoje</div><ul><li>Encara a página em branco</li><li>Formata e reescreve manualmente</li><li>Traduz com esforço</li></ul><div class="cc-foot">Tempo: horas</div></div>
+      <div class="compare-card new"><div class="cc-label">⚡ Com o Copilot</div><ul><li>Notas → <strong>documento formal</strong></li><li>Reescrita com <strong>tom executivo</strong></li><li>Versão em <strong>inglês</strong> num clique</li></ul><div class="cc-foot">Tempo: minutos</div></div>
+    </div>
+
+    <div class="passo">
+      <h3>Passo a passo no Word</h3>
+      <ol class="steps">
+        <li><span class="step-n">1</span><div>Em um documento novo, clique no ícone <span class="kbd">Copilot</span> → <strong>Rascunhar com o Copilot</strong>.</div></li>
+        <li><span class="step-n">2</span><div>Descreva o que quer (ou aponte um arquivo de referência com <span class="kbd">/</span>).</div></li>
+        <li><span class="step-n">3</span><div>Use <strong>"Reescrever"</strong> em trechos para ajustar tom; peça a versão em inglês.</div></li>
+        <li><span class="step-n">4</span><div>Revise números e fatos antes de finalizar.</div></li>
+      </ol>
+    </div>
+
+    <span class="tech-applied">R.A.C.E. + Restrições</span>
+    <div class="prompt-box"><div class="prompt-label">Prompt 1 · Notas → relatório</div>Transforme estas notas em um relatório formal de 1 página: introdução, pontos em tópicos e conclusão com recomendação. No máximo 1 página; não inclua dados que eu não forneci.</div>
+
+    <span class="tech-applied">R.A.C.E. + Persona</span>
+    <div class="prompt-box"><div class="prompt-label">Prompt 2 · Versão para o board (EN)</div>Aja como diretor de estratégia preparando material para VPs globais. Gere a versão em inglês corporativo deste documento, com 3 bullets de destaque e 1 recomendação. Depois, aja como um VP cético e aponte 2 pontos frágeis a reforçar.</div>
+
+    <div class="fc">
+      <div class="fc-head"><span class="fc-live">ao vivo</span><span class="fc-title">Transformar uma apresentação em documentação</span><span class="fc-app">Word · Modo agente</span></div>
+      <div class="fc-body">
+        <div class="fc-step"><div class="fc-k click">clique</div><div class="fc-c">No <span class="ui">Copilot</span> do Word, anexe o arquivo de PowerPoint do projeto e, em configurações, ative o <span class="ui agent">Modo agente</span>.</div></div>
+        <div class="fc-step"><div class="fc-k">prompt</div><div class="fc-c"><div class="fc-prompt">Transforme esta apresentação em um documento com explicações detalhadas sobre o projeto.</div></div></div>
+        <div class="fc-step"><div class="fc-k see">resultado</div><div class="fc-c">O documento vai se formando <b>em tempo real</b> — você acompanha página a página enquanto ele escreve.</div></div>
+      </div>
+    </div>
+
+    <div class="callout tip"><div class="callout-icon"></div><div><strong>Novidade 2026:</strong> ao abrir um documento longo, o Word já oferece um <strong>resumo automático</strong> no topo; e o Copilot pode <strong>editar o texto direto na página</strong> (não só sugerir ao lado). Peça "reescreva este parágrafo mais direto" e veja a alteração aplicada.</div></div>
+  </div>
+
+  <!-- 15 — DADOS -->
+  <div class="bloco" data-idx="15">
+    <div class="nivel-tag" style="background:var(--n2)">🛠 Copilot nas Ferramentas · Amplificação</div><br>
+    <div class="bloco-eyebrow">Bloco 15</div>
+    <h1>Dados &<br>Planilhas.</h1>
+    <div class="bloco-subtitle">Copilot no Excel — perguntar aos dados em português</div>
+    <div class="time-badge">⏱ 12 minutos</div>
+    <div class="red-rule"></div>
+
+    <div class="compare">
+      <div class="compare-card old"><div class="cc-label">⏳ Como você faz hoje</div><ul><li>Depende de fórmula avançada</li><li>Monta gráfico no braço</li><li>Demora a ver a tendência</li></ul><div class="cc-foot">Tempo: horas, às vezes travado</div></div>
+      <div class="compare-card new"><div class="cc-label">⚡ Com o Copilot</div><ul><li><strong>"O que esses dados dizem?"</strong></li><li>Gráfico e análise em segundos</li><li>Tendências explicadas</li></ul><div class="cc-foot">Tempo: segundos</div></div>
+    </div>
+
+    <div class="passo">
+      <h3>Passo a passo no Excel</h3>
+      <ol class="steps">
+        <li><span class="step-n">1</span><div>Garanta que os dados estão em <strong>tabela</strong> (Inserir → Tabela) — o Copilot trabalha melhor assim.</div></li>
+        <li><span class="step-n">2</span><div>Clique em <span class="kbd">Copilot</span> na faixa de opções.</div></li>
+        <li><span class="step-n">3</span><div>Peça insights, gráficos ou destaques em linguagem natural.</div></li>
+        <li><span class="step-n">4</span><div>Confira os números antes de usar em decisão.</div></li>
+      </ol>
+    </div>
+
+    <span class="tech-applied">R.A.C.E. + Pensar passo a passo</span>
+    <div class="prompt-box"><div class="prompt-label">Prompt 1 · O que os dados dizem</div>Analise esta tabela de vendas por país passo a passo: 1) o que mais cresceu e caiu; 2) 3 tendências; 3) 3 riscos que merecem atenção. Mostre em tópicos curtos.</div>
+
+    <span class="tech-applied">R.A.C.E. + Restrições</span>
+    <div class="prompt-box"><div class="prompt-label">Prompt 2 · Gráfico certo</div>Crie um gráfico de barras de vendas por país do último trimestre e destaque o país com maior queda. Não crie outros gráficos além desse.</div>
+
+    <div class="fc">
+      <div class="fc-head"><span class="fc-live">ao vivo</span><span class="fc-title">Chat comum × agente Analista — a diferença</span><span class="fc-app">Copilot Chat · @Analista</span></div>
+      <div class="fc-body">
+        <div class="fc-step"><div class="fc-k click">anexe</div><div class="fc-c">No chat, <span class="ui">+</span> → <b>Arquivos da nuvem</b> (OneDrive) e selecione as planilhas — ex: <i>Vendas_LATAM_2025-2026.xlsx</i>. (Também dá para usar <span class="ui">/</span> e buscar pelo nome.)</div></div>
+        <div class="fc-step"><div class="fc-k">prompt</div><div class="fc-c"><div class="fc-prompt">Analise esses dados com indicadores pertinentes para a área de vendas.</div> Sem agente, ele faz uma análise <b>textual</b> básica.</div></div>
+        <div class="fc-step"><div class="fc-k click">agora com agente</div><div class="fc-c">Digite <span class="ui agent">@Analista</span> e peça para refazer. Ele é o agente da Microsoft para dados.</div></div>
+        <div class="fc-step"><div class="fc-k see">resultado</div><div class="fc-c">Métricas principais + <b>gráficos gerados em Python</b> (top produtos por receita, classificação ABC, evolução mensal) — sem você pedir cada um. Use a <span class="ui">Galeria de prompts</span> do Analista para sugestões.</div></div>
+      </div>
+    </div>
+
+    <div class="fc">
+      <div class="fc-head"><span class="fc-live">ao vivo</span><span class="fc-title">Modo agente edita a planilha por você</span><span class="fc-app">Excel · Modo agente</span></div>
+      <div class="fc-body">
+        <div class="fc-step"><div class="fc-k click">clique</div><div class="fc-c"><span class="ui">Copilot</span> (canto superior direito) → nas opções, ative <span class="ui agent">Modo agente</span>. Ele faz edições <b>direto na planilha</b>.</div></div>
+        <div class="fc-step"><div class="fc-k">prompt</div><div class="fc-c"><div class="fc-prompt">Liste os principais indicadores de vendas por país (2020–2025), com análise detalhada e tabelas na primeira planilha e gráficos em outra. Seja profundo, com dados relevantes.</div></div></div>
+        <div class="fc-step"><div class="fc-k see">resultado</div><div class="fc-c">Tabelas + gráficos + conclusões com fontes, em minutos. <b>Mas confira:</b> um dos gráficos pode sair errado (misturar um ano, selecionar a faixa errada).</div></div>
+      </div>
+    </div>
+
+    <div class="callout warn"><div class="callout-icon"></div><div><strong>A intervenção humana ainda é necessária</strong> — e isso é uma força, não fraqueza. Quem entende de análise bate o olho e corrige o gráfico errado. O Copilot faz 90% em segundos; os 10% finais são seu julgamento. <strong>Copiloto, não piloto.</strong></div></div>
+
+    <h2>Bônus: a função <span class="ui">=COPILOT()</span> na célula</h2>
+    <p>Com o Copilot habilitado, dá para chamar a IA <strong>dentro de uma fórmula</strong>, como qualquer função do Excel.</p>
+    <div class="fc">
+      <div class="fc-head"><span class="fc-live">ao vivo</span><span class="fc-title">Classificar sentimento e gerar dados</span><span class="fc-app">Excel · =COPILOT()</span></div>
+      <div class="fc-body">
+        <div class="fc-step"><div class="fc-k">na célula</div><div class="fc-c"><div class="fc-prompt">=COPILOT("Classifique como negativo, neutro ou positivo"; B2)</div> Arraste para baixo e classifica a coluna inteira de comentários.</div></div>
+        <div class="fc-step"><div class="fc-k">também gera</div><div class="fc-c"><div class="fc-prompt">=COPILOT("liste todos os estados brasileiros e suas capitais")</div> Devolve os dados preenchidos, sem copiar e colar da internet.</div></div>
+      </div>
+    </div>
+    <div class="callout compliance"><div class="callout-icon"></div><div><strong>Edwards:</strong> use a mesma lógica de sentimento em <em>feedback de campo</em> ou <em>respostas de pesquisa com HCPs</em>, mas com dados anonimizados — sem identificar paciente ou afirmação clínica.</div></div>
+  </div>
+
+  <!-- 16 — APRESENTAÇÕES -->
+  <div class="bloco" data-idx="16">
+    <div class="nivel-tag" style="background:var(--n2)">🛠 Copilot nas Ferramentas · Amplificação</div><br>
+    <div class="bloco-eyebrow">Bloco 16</div>
+    <h1>Apresentações.</h1>
+    <div class="bloco-subtitle">Copilot no PowerPoint — do documento ao deck do board</div>
+    <div class="time-badge">⏱ 12 minutos</div>
+    <div class="red-rule"></div>
+
+    <div class="compare">
+      <div class="compare-card old"><div class="cc-label">⏳ Como você faz hoje</div><ul><li>Copia e cola texto em slides</li><li>Ajusta layout slide a slide</li><li>Gasta a noite anterior</li></ul><div class="cc-foot">Tempo: horas</div></div>
+      <div class="compare-card new"><div class="cc-label">⚡ Com o Copilot</div><ul><li>Documento Word vira <strong>deck</strong></li><li>Estrutura e tópicos prontos</li><li>Você refina, não constrói</li></ul><div class="cc-foot">Tempo: minutos</div></div>
+    </div>
+
+    <div class="passo">
+      <h3>Passo a passo no PowerPoint</h3>
+      <ol class="steps">
+        <li><span class="step-n">1</span><div>Abra um arquivo novo → <span class="kbd">Copilot</span> → <strong>Criar apresentação a partir de um arquivo</strong>.</div></li>
+        <li><span class="step-n">2</span><div>Aponte o documento Word de base.</div></li>
+        <li><span class="step-n">3</span><div>Ajuste com pedidos: "resuma para 5 slides", "tom executivo", "adicione uma imagem de capa".</div></li>
+        <li><span class="step-n">4</span><div>Revise a estrutura e os números.</div></li>
+      </ol>
+    </div>
+
+    <span class="tech-applied">R.A.C.E. + Restrições</span>
+    <div class="prompt-box"><div class="prompt-label">Prompt 1 · Deck a partir do documento</div>Crie uma apresentação a partir deste documento: slide de abertura, um slide por tema e um slide final de recomendações. Máximo 8 slides, tom executivo, sem texto em excesso por slide.</div>
+
+    <span class="tech-applied">R.A.C.E. + Persona</span>
+    <div class="prompt-box"><div class="prompt-label">Prompt 2 · Ensaio crítico</div>Aja como um membro do board com pouco tempo. Olhe este deck e me diga: o que não ficou claro, qual slide eu cortaria e qual número você questionaria.</div>
+
+    <div class="fc">
+      <div class="fc-head"><span class="fc-live">ao vivo</span><span class="fc-title">Documento vira deck — você escolhe estilo e imagens</span><span class="fc-app">Copilot → PowerPoint</span></div>
+      <div class="fc-body">
+        <div class="fc-step"><div class="fc-k click">clique</div><div class="fc-c">No chat, <span class="ui">Criar</span> → <span class="ui">Apresentação</span> (ou no PowerPoint: <span class="ui">Copilot</span> → criar a partir de um arquivo). Aponte o documento base.</div></div>
+        <div class="fc-step"><div class="fc-k see">tópicos</div><div class="fc-c">Ele gera os títulos e o conteúdo de cada slide e pede para você <b>escolher um estilo</b> (dá para usar o modelo da organização) e <b>imagens por IA</b>.</div></div>
+        <div class="fc-step"><div class="fc-k see">resultado</div><div class="fc-c">Deck estruturado em minutos — meio caminho andado. Você refina, não diagrama do zero.</div></div>
+      </div>
+    </div>
+
+    <div class="callout tip"><div class="callout-icon"></div><div><strong>A cadeia completa:</strong> ata (Bloco 12) → relatório no Word (Bloco 14) → deck no PowerPoint → capa em <span class="kbd">Criar</span> (Bloco 10). Tudo sem sair do Microsoft 365.</div></div>
+  </div>
+
+  <!-- 17 — AGENTES (COPILOT STUDIO) -->
+  <div class="bloco" data-idx="17">
+    <div class="nivel-tag" style="background:var(--n3)">🏗 Sistematização · Nível 3/4</div><br>
+    <div class="bloco-eyebrow">Bloco 17 · ★ avançado</div>
+    <h1>Crie um Agente<br>(Copilot Studio).</h1>
+    <div class="bloco-subtitle">Sair de "usar a IA" para "construir uma IA que trabalha por você"</div>
+    <div class="time-badge">⏱ 30 minutos · demo ao vivo</div>
+    <div class="red-rule"></div>
+
+    <p>Até aqui o Copilot ajudou <em>você</em>. Um <strong>agente</strong> é um assistente hiper-personalizado que responde por você — a funcionários, a clientes, até por e-mail — usando uma base de conhecimento que <strong>você</strong> define. A diferença para o ChatGPT: lá é uma IA generalista; aqui você treina o <strong>seu</strong> agente com informações próprias e libera para outras pessoas usarem.</p>
+
+    <div class="compare">
+      <div class="compare-card old"><div class="cc-label">⏳ Sem agente</div><ul><li>O RH responde a mesma dúvida 50 vezes</li><li>Cada um procura a política no e-mail antigo</li><li>Conhecimento preso em uma pessoa</li></ul></div>
+      <div class="compare-card new"><div class="cc-label">⚡ Com agente</div><ul><li>Pergunta no Teams → resposta na hora</li><li>Base única, sempre atualizada</li><li>Escala sem consumir o time</li></ul></div>
+    </div>
+
+    <h2>Onde se cria</h2>
+    <p><strong>Versão simples:</strong> no próprio Copilot, menu <span class="ui">Todos os agentes</span> → <span class="ui agent">Criar agente</span> (em <span class="ui">m365.cloud.microsoft</span>). <strong>Versão avançada</strong> (ferramentas e gatilhos): <span class="ui">copilotstudio.microsoft.com</span>. É a mesma plataforma, em dois ambientes.</p>
+
+    <div class="fc">
+      <div class="fc-head"><span class="fc-live">ao vivo</span><span class="fc-title">Agente de FAQ em conversa — do zero</span><span class="fc-app">Copilot Studio · Descrever</span></div>
+      <div class="fc-body">
+        <div class="fc-step"><div class="fc-k click">criar</div><div class="fc-c"><span class="ui agent">Criar agente</span> → aba <span class="ui">Descrever</span>. O próprio Copilot Studio conversa com você para configurar.</div></div>
+        <div class="fc-step"><div class="fc-k">descreva</div><div class="fc-c"><div class="fc-prompt">Quero um agente que responda dúvidas frequentes do time de campo da Edwards sobre políticas internas, reembolso de viagem e procedimentos — em tom cordial e objetivo.</div></div></div>
+        <div class="fc-step"><div class="fc-k">ajuste o tom</div><div class="fc-c"><div class="fc-prompt">Seja cordial e educado, não detalhe demais nem responda curto demais. Sempre pergunte se pode ajudar em mais algo. Use só as fontes que eu fornecer.</div></div></div>
+        <div class="fc-step"><div class="fc-k see">teste</div><div class="fc-c">Use a <b>pré-visualização à direita</b> para perguntar e refinar até a resposta ficar do jeito certo.</div></div>
+      </div>
+    </div>
+
+    <h2>Dar conhecimento ao agente</h2>
+    <p>Em <span class="ui">Configurar</span> você edita nome, ícone, descrição e a <strong>base de conhecimento</strong>: adicione <strong>URLs</strong> (ex: a intranet/SharePoint de políticas) e <strong>importe arquivos</strong> (ex: <span class="ui">FAQ.docx</span>, manual de reembolso). Em <span class="ui">solicitações sugeridas</span>, defina as perguntas que aparecem prontas.</p>
+
+    <div class="fc">
+      <div class="fc-head"><span class="fc-live">ao vivo</span><span class="fc-title">Fazer o agente ENVIAR um e-mail</span><span class="fc-app">Copilot Studio avançado · Ferramentas</span></div>
+      <div class="fc-body">
+        <div class="fc-step"><div class="fc-k click">ferramentas</div><div class="fc-c"><span class="ui">Adicionar ferramenta</span> → conectores: Excel, Teams, SharePoint, <b>Office 365 Outlook</b> e muitos além da Microsoft.</div></div>
+        <div class="fc-step"><div class="fc-k click">escolha</div><div class="fc-c"><span class="ui">Office 365 Outlook</span> → <span class="ui">Send an email (V2)</span>. Deixe destinatário, assunto e corpo <b>preenchidos pela IA</b>.</div></div>
+        <div class="fc-step"><div class="fc-k see">resultado</div><div class="fc-c">No teste, peça "envie isso por e-mail" → o agente dispara o e-mail com as informações. Dá para acompanhar cada execução (para quem, assunto, corpo).</div></div>
+      </div>
+    </div>
+
+    <h2>Publicar e compartilhar</h2>
+    <p>Pelo <span class="ui">Compartilhar</span> você libera o agente para <strong>toda a organização</strong>, <strong>usuários/grupos específicos</strong> ou dentro de um <strong>canal do Teams</strong>, onde ele responde os colaboradores automaticamente. O agente fica na barra lateral e em <span class="ui">Atividade</span> você vê as interações para aprimorá-lo.</p>
+
+    <div class="callout warn"><div class="callout-icon"></div><div><strong>Gatilhos automáticos — com muito critério.</strong> Em <span class="ui">Adicionar gatilho</span> dá para fazer o agente <strong>responder e-mails sozinho</strong> ("quando um novo e-mail chega"). É poderoso e arriscado: só faz efeito após <span class="ui">Publicar</span>, e responder a caixa inteira sem curadoria sai caro em credibilidade. Comece <strong>sem gatilho</strong> — agente que sugere a resposta e você aprova. Ligue automação só num escopo estreito e validado.</div></div>
+
+    <h2>Ideias de agentes para a Edwards</h2>
+    <ul class="bullets">
+      <li><strong>Agente de Políticas & Reembolso</strong> — responde o time de campo no Teams (base: SharePoint de RH/Compliance).</li>
+      <li><strong>Agente de Onboarding</strong> — guia novos colaboradores nos primeiros 30 dias.</li>
+      <li><strong>Agente de Pré-visita</strong> — consolida histórico do hospital antes da visita comercial (sem dado clínico/paciente).</li>
+    </ul>
+
+    <div class="callout compliance"><div class="callout-icon"></div><div><strong>Governança primeiro:</strong> criar agentes, conectar ferramentas e publicar para a organização normalmente exige aprovação da <strong>TI/admin</strong> — confirme com o Felipe o que está liberado. Nunca coloque dado sensível, clínico ou confidencial na base de conhecimento sem validar com Compliance. Mantenha <strong>humano no circuito</strong>: o agente sugere; pessoas decidem o que é crítico.</div></div>
+  </div>
+
+  <!-- 18 — ROADMAP -->
+  <div class="bloco" data-idx="18">
+    <div class="nivel-tag" style="background:var(--n4)">🌐 Aplicar · Roadmap</div><br>
+    <div class="bloco-eyebrow">Bloco 18</div>
+    <h1>Roadmap<br>7 · 30 · 90 dias.</h1>
+    <div class="bloco-subtitle">Transformar o que você testou hoje em hábito — e em case real</div>
+    <div class="time-badge">⏱ 20 minutos</div>
+    <div class="red-rule"></div>
+
+    <p>A meta não é virar especialista — é fixar 2–3 usos que devolvem tempo toda semana.</p>
+    <table>
+      <thead><tr><th>Horizonte</th><th>Meta</th><th>Exemplo aplicado</th></tr></thead>
+      <tbody>
+        <tr><td>7 dias</td><td>Dominar o básico</td><td>Modos certos (Automático / Think Deeper) + ata de reunião pelo Copilot</td></tr>
+        <tr><td>30 dias</td><td>3 frentes + 1 Projeto</td><td>Reuniões + e-mail + um relatório recorrente, e um Projeto com seu contexto</td></tr>
+        <tr><td>90 dias</td><td>Multiplicar + 1 agente</td><td>Cada líder ensina 2 usos ao time, colhe os cases e mapeia 1 agente (FAQ de área) para construir com a TI</td></tr>
+      </tbody>
+    </table>
+    <div class="callout star"><div class="callout-icon"></div><div><strong>Os cases que o RH quer ouvir nascem aqui.</strong> Anote o "antes e depois" — quanto a tarefa levava e quanto leva agora.</div></div>
+    <h2>Ponte para a tarde</h2>
+    <p>Às 14h o time recebe a palestra prática (ao vivo no Teams). Os líderes da manhã são a prova de que IA já está em uso pela própria gestão. Leve um exemplo seu para citar.</p>
+  </div>
+
+  <!-- 19 — DESAFIO -->
+  <div class="bloco" data-idx="19">
+    <div class="bloco-eyebrow">Continuidade · Prática</div>
+    <h1>Desafio<br>7 Dias.</h1>
+    <div class="bloco-subtitle">Um passo por dia — só com o Copilot que você já tem</div>
+    <div class="red-rule"></div>
+
+    <p>Aprendizado que não vira rotina some em uma semana. Uma ação por dia, no trabalho real.</p>
+    <div class="challenge-box">
+      <div class="ch-title">🎯 SEU DESAFIO DA SEMANA</div>
+      <div class="ch-day"><span class="day-pill">Dia 1</span><span class="day-text">Na próxima reunião, <strong>ligue gravação + transcrição</strong> e gere a ata</span></div>
+      <div class="ch-day"><span class="day-pill">Dia 2</span><span class="day-text">Peça o <strong>e-mail de follow-up</strong> a partir dessa ata e envie</span></div>
+      <div class="ch-day"><span class="day-pill">Dia 3</span><span class="day-text">Compare <strong>Resposta Rápida × Think Deeper</strong> na mesma pergunta</span></div>
+      <div class="ch-day"><span class="day-pill">Dia 4</span><span class="day-text">Aplique <strong>uma técnica</strong> (dar exemplos ou restrições) num pedido real</span></div>
+      <div class="ch-day"><span class="day-pill">Dia 5</span><span class="day-text">Crie um <strong>Projeto</strong> com instruções e 2 documentos-base</span></div>
+      <div class="ch-day"><span class="day-pill">Dia 6</span><span class="day-text">Gere uma <strong>imagem</strong> no Imaginar para um comunicado ou slide</span></div>
+      <div class="ch-day"><span class="day-pill">Dia 7</span><span class="day-text">Anote seu <strong>case real</strong>: qual tarefa ficou mais rápida e quanto tempo ganhou</span></div>
+    </div>
+    <div class="callout tip" style="margin-top:24px;"><div class="callout-icon"></div><div>Você tem <strong>30 dias de suporte via WhatsApp</strong> para dúvidas de implementação.</div></div>
+  </div>
+
+  <!-- 20 — FAQ / RECURSOS -->
+  <div class="bloco" data-idx="20">
+    <div class="bloco-eyebrow">Recursos · Consulta</div>
+    <h1>Boas Práticas,<br>FAQ & Recursos.</h1>
+    <div class="bloco-subtitle">Segurança, dúvidas comuns e onde continuar aprendendo</div>
+    <div class="red-rule"></div>
+
+    <div class="callout compliance"><div class="callout-icon"></div><div><strong>Bom senso com dados:</strong> use o Copilot, que roda sob proteção corporativa da Microsoft. Ainda assim, dado pessoal sensível, clínico ou confidencial não deve ser colado em IA sem necessidade. Na dúvida, anonimize e consulte Compliance.</div></div>
+
+    <h2>Boas práticas rápidas</h2>
+    <ul class="bullets">
+      <li><strong>Sempre revise</strong> números, fatos e o que vai para fora — co-piloto, não piloto.</li>
+      <li><strong>Ligue gravação/transcrição</strong> no início das reuniões.</li>
+      <li><strong>Modo certo:</strong> Automático no dia a dia, Think Deeper para o que importa.</li>
+      <li><strong>Prompt com contexto</strong> (R.A.C.E. + técnica) poupa retrabalho.</li>
+    </ul>
+
+    <h2>Perguntas frequentes</h2>
+    <table>
+      <thead><tr><th>Pergunta</th><th>Resposta</th></tr></thead>
+      <tbody>
+        <tr><td>Qual IA roda no nosso Copilot?</td><td>No seletor aparecem, da OpenAI, GPT 5.5 e GPT 5.2 (Resposta Rápida / Think Deeper) e, da Anthropic, Claude Opus — tudo com proteção de dados corporativos. Deixe no Automático ou fixe um modelo. A disponibilidade de cada um é definida pela TI/admin.</td></tr>
+        <tr><td>Qual a melhor IA do mercado?</td><td>Não há uma só — depende da tarefa. Para dado de trabalho, comece pelo Copilot. Para acompanhar rankings: LMArena e Artificial Analysis.</td></tr>
+        <tr><td>Qual modo escolher?</td><td>Automático para 80% do dia. Think Deeper para estratégia. Trabalho × Web para escolher a fonte.</td></tr>
+        <tr><td>Por que minha reunião não gerou ata?</td><td>A gravação/transcrição não foi ligada. Quem organiza precisa ativar.</td></tr>
+        <tr><td>Tenho "Projetos"? Onde ficam os conectores?</td><td>Nesta versão não há "Projetos"; as fontes externas ficam em Configurações → Fontes, e você conta com prompts agendados e Notebooks. O que está liberado (fontes, agendamento, integrações como Salesforce) depende do tenant — confirme com o Felipe.</td></tr>
+        <tr><td>Como crio um agente?</td><td>Versão simples no Copilot (<em>Todos os agentes → Criar agente</em>); versão avançada com ferramentas e gatilhos em <em>copilotstudio.microsoft.com</em>. Publicar para a organização e ligar gatilhos automáticos exige aprovação da TI/admin (Bloco 17).</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Para continuar aprendendo</h2>
+    <div class="linklist">
+      <a href="https://learn.microsoft.com/pt-br/training/paths/get-started-with-microsoft-365-copilot/"><b>Trilha oficial Microsoft (PT)</b> — <span>Comece a usar o Microsoft 365 Copilot · 3 módulos</span></a>
+      <a href="https://copilotstudio.microsoft.com"><b>Microsoft Copilot Studio</b> — <span>criar e publicar agentes (versão avançada)</span></a>
+      <a href="https://adoption.microsoft.com/en-us/scenario-library/"><b>Copilot Scenario Library</b> — <span>casos reais por função (Sales, RH, Finanças, Ops…) com prompt e resultado esperado</span></a>
+      <a href="https://copilot.cloud.microsoft"><b>Copilot Prompt Gallery</b> — <span>banco oficial de prompts prontos</span></a>
+      <a href="https://lmarena.ai"><b>LMArena</b> — <span>ranking de modelos por preferência humana</span></a>
+      <a href="https://artificialanalysis.ai"><b>Artificial Analysis</b> — <span>qualidade, velocidade e preço dos modelos</span></a>
+      <a href="https://www.microsoft.com/en-us/microsoft-365/roadmap"><b>Microsoft 365 Roadmap</b> — <span>o que está chegando ao Copilot</span></a>
+    </div>
+
+    <div class="callout info"><div class="callout-icon"></div><div><strong>Sites para a TI liberar antes do dia</strong> (confirmar endpoints oficiais do M365 com o Felipe): m365.cloud.microsoft · copilot.cloud.microsoft · copilot.microsoft.com. Panorama de IA: chatgpt.com · claude.ai · gemini.google.com · perplexity.ai.</div></div>
+
+    <div class="callout tip"><div class="callout-icon"></div><div><strong>Um dia. Dois públicos. Uma direção.</strong> De manhã os líderes abrem o caminho; de tarde o time caminha junto.</div></div>
+  </div>
+
+</div><!-- /content -->
+
+<div id="bottomnav">
+  <button class="nav-prev" id="btnPrev" onclick="navStep(-1)">← Anterior</button>
+  <span class="nav-counter" id="navCounter">1 / 21</span>
+  <button class="nav-next" id="btnNext" onclick="navStep(1)">Próximo →</button>
+</div>
+
+<script>
+const TOTAL = 21;
+let current = 0;
+function goTo(idx) {
+  if (idx < 0 || idx >= TOTAL) return;
+  document.querySelectorAll('.bloco').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.bloco[data-idx="${idx}"]`).classList.add('active');
+  document.querySelectorAll('.sidebar-item').forEach(s => s.classList.remove('active'));
+  const si = document.querySelector(`.sidebar-item[data-idx="${idx}"]`);
+  if (si) si.classList.add('active');
+  const map = [0,1,1,1,5,5,6,6,6,6,6,6,12,12,12,12,12,17,18,18,18];
+  const order = [0,1,5,6,12,17,18];
+  const target = map[idx];
+  document.querySelectorAll('.top-nav-btn').forEach((b,i)=>{ b.classList.toggle('active', order[i]===target); });
+  current = idx;
+  updateNav();
+  window.scrollTo(0, 0);
+}
+function navStep(dir) { goTo(current + dir); }
+function updateNav() {
+  document.getElementById('navCounter').textContent = `${current + 1} / ${TOTAL}`;
+  document.getElementById('btnPrev').disabled = current === 0;
+  document.getElementById('btnNext').disabled = current === TOTAL - 1;
+  const dotsEl = document.getElementById('dots');
+  dotsEl.innerHTML = '';
+  for (let i = 0; i < TOTAL; i++) {
+    const d = document.createElement('div');
+    d.className = 'dot-nav' + (i === current ? ' active' : (i < current ? ' done' : ''));
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+  }
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') navStep(1);
+  if (e.key === 'ArrowLeft') navStep(-1);
+});
+updateNav();
+</script>
+</body>
+</html>
